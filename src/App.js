@@ -10,7 +10,8 @@ function App() {
 
       </header>
       <h2>APIS grupo 4</h2>
-      <h5>PRueba 2</h5>    
+      <h5>PRueba 2</h5>
+      <h6>PRUeba 3</h6> 
     </div>
   );
 }
