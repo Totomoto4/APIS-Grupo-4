@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
@@ -19,7 +19,7 @@ const Register = () => {
     // Agrega tu lógica de validación aquí
     if (username.trim() !== '' && email.trim() !== '' && password.trim() !== '') {
       // Si los datos son válidos, redirige al usuario a la ruta '/home'
-      navigate('/home');
+      navigate('/login');
     } else {
       // Si los datos no son válidos, muestra un mensaje de error o realiza otra acción
       console.log('Por favor, completa todos los campos.');
@@ -60,6 +60,11 @@ const Register = () => {
                 <br />
                 <button type="submit">Registrarse</button>
             </form>
+            <div className="register-footer">
+          <p>
+            ¿Tienes cuenta? <Link to="/login">Inicia Sesión</Link>
+          </p>
+        </div>
         </div>
     </div>
   );
