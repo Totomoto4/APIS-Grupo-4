@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
+import { USUARIOS } from '../dummys/usuariosDummy';
+import { UserContext } from '../context/UserContext.tsx';
+
+
+function authUser(email, password){
+  //valida el email y contraseña, si son valido devuelve el usuario, sino undefined
+  const usuarioEncontrado = USUARIOS.find( (usuario) => usuario.email === email);
+
+  if(usuarioEncontrado && usuarioEncontrado.contraseña === password){
+    return usuarioEncontrado;
+  }
+  
+  return undefined; //si no lo encontro o la password esta mal, devuelve undefined
+}
+
 const Login = () => {
+
+  //State del form
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  //State de user
+  const {user , updateUser} = useContext(UserContext);
+
+  console.log(user);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -13,13 +36,15 @@ const Login = () => {
     console.log('Correo electrónico:', email);
     console.log('Contraseña:', password);
 
-    // Agrega tu lógica de validación aquí
-    if (email.trim() !== '' && password.trim() !== '') {
+    const usuarioEncontrado = authUser(email, password);
+
+    if (usuarioEncontrado) {
       // Si los datos son válidos, redirige al usuario a la ruta '/home'
+      updateUser(usuarioEncontrado);
       navigate('/home');
     } else {
       // Si los datos no son válidos, muestra un mensaje de error o realiza otra acción
-      console.log('Por favor, completa todos los campos.');
+      console.log('Los datos son incorrectos');
     }
   };
 
