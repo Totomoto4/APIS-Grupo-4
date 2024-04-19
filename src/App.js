@@ -5,6 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Homepage from './components/Homepage';
+import { UserContext } from './context/UserContext.tsx';
+import { useState } from 'react';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +25,17 @@ const router = createBrowserRouter([
 
 function App() {
 
+  const [user, setUser] = useState(undefined);
+
+  function updateUser(newValue){
+    setUser(newValue);
+  }
+
   return (
-    <RouterProvider router={router}/>
+    <UserContext.Provider value={{user, updateUser}}>
+      <RouterProvider router={router}/>
+    </UserContext.Provider>
+    
   );
 }
 
