@@ -29,7 +29,7 @@ const Login = () => {
         <h1>Inicio de sesión</h1>
         <form onSubmit={handleSubmit}>
           <label>
-            Correo electrónico:
+            Correo electrónico
             <input
               type="email"
               value={email}
@@ -38,7 +38,7 @@ const Login = () => {
           </label>
           <br />
           <label>
-            Contraseña:
+            Contraseña
             <input
               type="password"
               value={password}
