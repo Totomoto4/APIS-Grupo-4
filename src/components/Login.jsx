@@ -5,10 +5,10 @@ import './Login.css';
 import { USUARIOS } from '../dummys/usuariosDummy';
 import { UserContext } from '../context/UserContext.tsx';
 
-
+//Esta funcionalidad sera del backend, es temporal.
 function authUser(email, password){
   //valida el email y contraseña, si son valido devuelve el usuario, sino undefined
-  const usuarioEncontrado = USUARIOS.find( (usuario) => usuario.email === email);
+  const usuarioEncontrado = USUARIOS.find( (usuario) => usuario.email === email.trim());
 
   if(usuarioEncontrado && usuarioEncontrado.contraseña === password){
     return usuarioEncontrado;
@@ -25,8 +25,6 @@ const Login = () => {
 
   //State de user
   const {user , updateUser} = useContext(UserContext);
-
-  console.log(user);
 
   const navigate = useNavigate();
 
@@ -58,10 +56,9 @@ const Login = () => {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.trim())}
             />
           </label>
-          <br />
           <label>
             Contraseña
             <input
@@ -70,7 +67,6 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <br />
           <button type="submit">Iniciar sesión</button>
         </form>
         <div className="login-footer">
