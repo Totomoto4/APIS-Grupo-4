@@ -1,0 +1,18 @@
+
+.content {
+    padding: 1rem; /* Añade relleno al contenido */
+}
+.product-cards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en múltiples líneas */
+    gap: 1rem; /* Agrega espacio entre las tarjetas */
+    justify-content: center; /* Alinea las tarjetas al centro horizontalmente */
+}
+
+.product-card {
+    width: calc(33.33% - 1rem); /* Toma un tercio del ancho del contenedor y resta el espacio entre las tarjetas */
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* Mantiene el aspecto cuadrado */
+}
