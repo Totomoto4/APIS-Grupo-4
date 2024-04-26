@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../imagenes/logo.svg";
 import "./Header.css";
 import carritoIcono from "../imagenes/carrito_1.svg"; 
+import ShoppingCart from "./ShoppingCart";
 
 function Header() {
   return (
@@ -15,9 +16,7 @@ function Header() {
         </div>
         <div className="links">
             <a href="#">Categorías</a>
-            <a href="#" id="carrito-link">
-                <img src={carritoIcono} alt="Carrito" id="carrito-icono"    />
-            </a>
+            <ShoppingCart />
             <a href="#">Cuenta</a>
         </div>
     </nav>
