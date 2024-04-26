@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
-import { USUARIOS } from '../dummys/usuariosDummy';
+import { USUARIOS } from '../dummys/usuariosDummy.js';
 import { UserContext } from '../context/UserContext.tsx';
+
+import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
 
 //Esta funcionalidad sera del backend, es temporal.
 function authUser(email, password){
@@ -49,6 +51,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
+        <img src={logo} alt='logo' id='logo'/>
         <h1>Inicio de sesión</h1>
         <form onSubmit={handleSubmit}>
           <label>
