@@ -1,0 +1,9 @@
+footer{
+    display: flex;
+    height: 5%;
+    background-color: aqua;
+
+    img{
+        height: 4rem;
+    }
+}
