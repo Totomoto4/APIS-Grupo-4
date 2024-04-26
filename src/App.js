@@ -2,9 +2,10 @@
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Register from './components/Register';
-import Login from './components/Login';
-import Homepage from './components/Homepage';
+import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
+import Homepage from './pages/Homepage.jsx';
+import Catalogo from './pages/Catalogo.jsx';
 import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
 
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path:'register',
     element: <Register/>
+  },
+  {
+    path:'catalogo',
+    element: <Catalogo/>,
+    
   }
 ])
 
