@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../imagenes/generales/kiwi-logo-pequeño.png";
 import "./Header.css";
 import carritoIcono from "../imagenes/carrito_1.svg"; 
+import ShoppingCart from "./ShoppingCart";
 
 function Header() {
   return (
@@ -17,11 +18,9 @@ function Header() {
           <button type="button">Buscar</button>
         </div>
         <div className="links">
-          <a href="#">Categorías</a>
-          <a href="#" id="carrito-link">
-            <img src={carritoIcono} alt="Carrito" id="carrito-icono" />
-          </a>
-          <a href="#">Cuenta</a>
+            <a href="#">Categorías</a>
+            <ShoppingCart />
+            <a href="#">Cuenta</a>
         </div>
       </nav>
     </>
