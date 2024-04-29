@@ -14,7 +14,15 @@ nav{
     }
 }
 
-
+select{
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #c71717;
+    font-family: 'Simpson';
+    color: white;
+    cursor: pointer;
+}
 .logo-container {
     display: flex;
     justify-content: center;
