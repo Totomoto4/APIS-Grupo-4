@@ -89,6 +89,48 @@ select{
 #carrito-link {
     margin-top: -5px; /* Ajusta el margen superior según sea necesario */
 }
+#Icono-carrito {
+    width: 2rem;
+    height: 2rem;
+}
+
+#carrito-link {
+    margin-top: -5px; /* Ajusta el margen superior según sea necesario */
+}
+
+.PopOverContent{
+    max-width: 50rem;
+    max-height: 50rem;
+    border: 2px solid #b83241;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0,5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.ExitPopover{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 35px;
+    background-color: #658e14;
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+.FinalizarCompra{
+    margin: 7px;
+    background-color: #658e14;
+    color: #b83241;
+    border-radius: 8px;
+    border-width: 0px;
+    cursor: pointer;
+}
 @media (min-width: 48rem) { /* Media query para 768px */
     #navHeader {
         flex-direction: row;

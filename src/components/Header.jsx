@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../imagenes/generales/kiwi-logo-pequeño.png";
 import "./Header.css";
 import carritoIcono from "../imagenes/carrito_1.svg";
+import ShoppingCart from "./ShoppingCart";
 
 function Header({ categories = [], onCategoryFilter }) {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -33,9 +34,7 @@ function Header({ categories = [], onCategoryFilter }) {
                 </option>
               ))}
           </select>
-          <a href="#" id="carrito-link">
-            <img src={carritoIcono} alt="Carrito" id="carrito-icono" />
-          </a>
+          <ShoppingCart />
           <a href="#">Cuenta</a>
         </div>
       </nav>
