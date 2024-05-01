@@ -3,7 +3,7 @@ export const USUARIOS = [
         nombreUsuario: 'FranciscoZanon',
         nombre: 'Francisco',
         apellido: 'Zanon',
-        email: 'franciscoZanon@gmail.com',
+        email: 'admin@gmail.com',
         contraseña: '12345',
         rol: 'cliente'
     },

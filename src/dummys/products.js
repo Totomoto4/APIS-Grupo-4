@@ -13,6 +13,7 @@ export const products = [
     description: 'Descripción del producto 1',
     price: 19.99,
     image: monitor,
+    category: 'Monitores',
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const products = [
     description: 'Descripción del producto 2',
     price: 29.99,
     image: teclado,
+    category: 'Teclados',
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ export const products = [
     description: 'Descripción del producto 3',
     price: 29.99,
     image: auris,
+    category: 'Monitores',
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const products = [
     description: 'Descripción del producto 4',
     price: 29.99,
     image: placa,
+    category: 'Monitores',
   },
   {
     id: 5,
@@ -41,6 +45,7 @@ export const products = [
     description: 'Descripción del producto 5',
     price: 29.99,
     image: cargador,
+    category: 'Monitores',
   },
   {
     id: 6,
@@ -48,5 +53,6 @@ export const products = [
     description: 'Descripción del producto 6',
     price: 29.99,
     image: mouse,
+    category: 'Monitores',
   },
 ];

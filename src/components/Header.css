@@ -1,14 +1,33 @@
-#navHeader {
+nav{
     display: flex;
     flex-direction: column;
-    background-color: #3483fa;
-    padding: 1rem;
+    justify-content: space-around;
+    background-color: #658e14;
+    color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.26);
+
+    h1{
+        font-family: 'Simpson';
+        padding: 0;
+        margin: 0;
+    }
 }
 
+select{
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #c71717;
+    font-family: 'Simpson';
+    color: white;
+    cursor: pointer;
+}
 .logo-container {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
+    gap: 1rem;
 }
 
 .logo-container img {
@@ -19,25 +38,31 @@
 .searchBox {
     display: flex;
     align-items: center;
+    gap: 1rem;
     margin-bottom: 1rem;
+    width: 40%;
 }
 
 .searchBox input[type="text"] {
     flex-grow: 1;
     padding: 0.8rem;
-    border-radius: 1rem;
-    border: none;
-    margin-right: 1rem;
-    width: 20rem; /* Ajusta el ancho del campo de búsqueda */
+    border: solid #b83241;
+    width: 100%; /* Ajusta el ancho del campo de búsqueda */
 }
 
 .searchBox button {
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 1rem;
-    background-color: #59b9f1;
+    background-color: #c71717;
+    font-family: 'Simpson';
     color: white;
     cursor: pointer;
+}
+
+.searchBox button:hover{
+    background-color: #ecde1a;
+    color: black;
 }
 
 .links {
@@ -64,6 +89,48 @@
 #carrito-link {
     margin-top: -5px; /* Ajusta el margen superior según sea necesario */
 }
+#Icono-carrito {
+    width: 2rem;
+    height: 2rem;
+}
+
+#carrito-link {
+    margin-top: -5px; /* Ajusta el margen superior según sea necesario */
+}
+
+.PopOverContent{
+    max-width: 50rem;
+    max-height: 50rem;
+    border: 2px solid #b83241;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0,5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.ExitPopover{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 35px;
+    background-color: #658e14;
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+.FinalizarCompra{
+    margin: 7px;
+    background-color: #658e14;
+    color: #b83241;
+    border-radius: 8px;
+    border-width: 0px;
+    cursor: pointer;
+}
 @media (min-width: 48rem) { /* Media query para 768px */
     #navHeader {
         flex-direction: row;
@@ -78,3 +145,5 @@
         margin-bottom: 0;
     }
 }
+
+

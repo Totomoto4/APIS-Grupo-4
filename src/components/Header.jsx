@@ -1,26 +1,44 @@
-import React from "react";
-import logo from "../imagenes/logo.svg";
+import React, { useState } from "react";
+import logo from "../imagenes/generales/kiwi-logo-pequeño.png";
 import "./Header.css";
-import carritoIcono from "../imagenes/carrito_1.svg"; 
+import carritoIcono from "../imagenes/carrito_1.svg";
+import ShoppingCart from "./ShoppingCart";
 
-function Header() {
+function Header({ categories = [], onCategoryFilter }) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleCategoryChange = (event) => {
+    const category = event.target.value;
+    setSelectedCategory(category);
+    onCategoryFilter(category);
+  };
+
   return (
-    <nav id="navHeader">
+    <>
+      <nav id="navHeader">
         <div className="logo-container">
-            <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" />
+          <h1>Kiwik-E-Mart</h1>
         </div>
         <div className="searchBox">
-            <input type="text" placeholder="Buscar productos..." />
-            <button type="button">Buscar</button>
+          <input type="text" placeholder="Buscar productos..." />
+          <button type="button">Buscar</button>
         </div>
         <div className="links">
-            <a href="#">Categorías</a>
-            <a href="#" id="carrito-link">
-                <img src={carritoIcono} alt="Carrito" id="carrito-icono"    />
-            </a>
-            <a href="#">Cuenta</a>
+          <select value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">Todas las categorias</option>
+            {categories.length > 0 &&
+              categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+          </select>
+          <ShoppingCart />
+          <a href="#">Cuenta</a>
         </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 

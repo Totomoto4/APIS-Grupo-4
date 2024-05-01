@@ -1,0 +1,25 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    
+    h1{
+        font-family: 'Simpson';
+        color: rgb(236, 218, 48);
+    }
+}
+.product-container {
+    font-family: 'Simpson';
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  
+  #product-card {
+    width: 300px; /* Ajusta el ancho según tus preferencias */
+    margin: 10px; /* Añade un margen entre las tarjetas */
+  }
