@@ -37,7 +37,7 @@ const Cart = ({ setShowCartModal }) => {
             {Object.entries(cart).map(([productId, { product, cantidad }]) => (
               <li key={productId}>
                 {product.name} - ${product.price} x {cantidad}
-                <button className="remove-button" onClick={() => handleRemoveFromCart(productId)}>Remover</button>
+                <button className="remove-button" onClick={() => handleRemoveFromCart(productId)}>-</button>
               </li>
             ))}
           </ul>
