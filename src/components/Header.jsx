@@ -3,14 +3,20 @@ import logo from "../imagenes/generales/kiwi-logo-pequeño.png";
 import "./Header.css";
 import carritoIcono from "../imagenes/carrito_1.svg";
 import ShoppingCart from "./ShoppingCart";
+import Cart from "./Cart"; // Importar el componente Cart
 
 function Header({ categories = [], onCategoryFilter }) {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [showCartModal, setShowCartModal] = useState(false);
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
     onCategoryFilter(category);
+  };
+
+  const handleShowCartModal = () => {
+    setShowCartModal(!showCartModal);
   };
 
   return (
@@ -34,10 +40,23 @@ function Header({ categories = [], onCategoryFilter }) {
                 </option>
               ))}
           </select>
-          <ShoppingCart />
+          {/* <ShoppingCart /> */}
+          <button onClick={handleShowCartModal}>
+            <img src={carritoIcono} alt="Carrito de compras" id="Icono-carrito"/>
+          </button>
           <a href="#">Cuenta</a>
         </div>
       </nav>
+      {showCartModal && (
+        <div className="cart-modal">
+          <div className="cart-modal-content">
+            <span className="close-button" onClick={handleShowCartModal}>
+              &times;
+            </span>
+            <Cart setShowCartModal={setShowCartModal} />
+          </div>
+        </div>
+      )}
     </>
   );
 }

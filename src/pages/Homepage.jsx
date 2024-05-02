@@ -7,6 +7,7 @@ import logoGrande from "../imagenes/generales/apu.jpg";
 import Footer from "../components/Footer.jsx";
 import ProductCard from "../components/ProductCard.jsx";
 import { products } from "../dummys/products.js";
+import Cart from "../components/Cart.jsx";
 
 export default function Homepage() {
     const { user, updateUser } = useContext(UserContext);

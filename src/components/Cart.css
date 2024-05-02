@@ -1,0 +1,24 @@
+.remove-button {
+    background-color: #ff6347; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero */
+    margin-left: 10px; /* Margen izquierdo */
+  }
+  
+  .checkout-button {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero */
+    margin-top: 20px; /* Margen superior */
+  }
+  
+  .checkout-button:hover,
+  .remove-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  }
