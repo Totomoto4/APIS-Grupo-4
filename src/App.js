@@ -8,6 +8,8 @@ import Homepage from './pages/Homepage.jsx';
 import Catalogo from './pages/Catalogo.jsx';
 import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './store.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,9 +40,11 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{user, updateUser}}>
-      <RouterProvider router={router}/>
-    </UserContext.Provider>
+    <Provider store={store}> 
+      <UserContext.Provider value={{ user, updateUser }}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
+    </Provider>
     
   );
 }
