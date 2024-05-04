@@ -1,38 +1,30 @@
-nav{
+header{
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     background-color: #658e14;
+    font-family: 'Simpson';
     color: #fff;
     padding: 1rem 2rem;
-    box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.26);
-
-    h1{
-        font-family: 'Simpson';
-        padding: 0;
-        margin: 0;
-    }
+    box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.377);
+    position:relative;
 }
 
-select{
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 1rem;
-    background-color: #c71717;
-    font-family: 'Simpson';
-    color: white;
-    cursor: pointer;
-}
 .logo-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 1rem;
     gap: 1rem;
-}
 
-.logo-container img {
-    width: auto;
-    height: 2.5rem;
+    h1{
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    img {
+        width: auto;
+        height: 2.5rem;
+    }
 }
 
 .searchBox {
@@ -48,6 +40,7 @@ select{
     padding: 0.8rem;
     border: solid #b83241;
     width: 100%; /* Ajusta el ancho del campo de búsqueda */
+    border-radius: 1rem;
 }
 
 .searchBox button {
@@ -55,7 +48,6 @@ select{
     border: none;
     border-radius: 1rem;
     background-color: #c71717;
-    font-family: 'Simpson';
     color: white;
     cursor: pointer;
 }
@@ -69,6 +61,8 @@ select{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .links a {
@@ -82,20 +76,23 @@ select{
     text-decoration: underline;
 }
 
-#carrito-icono {
-    width: 2.5rem;
-    height: 2.5rem;
+select{
+    margin: auto;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #c71717;
+    font-family: 'Simpson';
+    color: white;
+    cursor: pointer;
 }
+
 #carrito-link {
     margin-top: -5px; /* Ajusta el margen superior según sea necesario */
 }
 #Icono-carrito {
     width: 2rem;
     height: 2rem;
-}
-
-#carrito-link {
-    margin-top: -5px; /* Ajusta el margen superior según sea necesario */
 }
 
 .PopOverContent{
@@ -156,7 +153,8 @@ select{
       }
       
       .cart-modal-content {
-        background-color: #fefefe;
+        background-color: #658e14;
+        color: white;
         margin: 15% auto;
         padding: 20px;
         border: 1px solid #888;
@@ -164,7 +162,7 @@ select{
       }
       
       .close-button {
-        color: #aaa;
+        color: white;
         float: right;
         font-size: 28px;
         font-weight: bold;
@@ -177,5 +175,3 @@ select{
         cursor: pointer;
       }
 }
-
-
