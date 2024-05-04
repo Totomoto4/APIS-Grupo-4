@@ -1,3 +1,12 @@
+.catalogo-main {
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
 .content {
     padding: 1rem; /* Añade relleno al contenido */
 }
@@ -14,4 +23,23 @@
     border-radius: 0.5rem;
     overflow: hidden;
     aspect-ratio: 1/1; /* Mantiene el aspecto cuadrado */
+}
+.catalogo-container {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+    width: 70%;
+}
+
+#product-card {
+    width: 300px;
+    /* Ajusta el ancho según tus preferencias */
+    margin: 10px;
+    /* Añade un margen entre las tarjetas */
+}
+
+footer {
+    margin-top: auto;
 }
