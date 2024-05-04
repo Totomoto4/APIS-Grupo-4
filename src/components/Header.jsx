@@ -35,7 +35,7 @@ function Header() {
         <DropdownCategorias></DropdownCategorias>
 
         {/* <ShoppingCart /> */}
-        <button onClick={handleShowCartModal}>
+        <button onClick={handleShowCartModal} id="carritobtn">
           <img src={carritoIcono} alt="Carrito de compras" id="Icono-carrito" />
         </button>
 

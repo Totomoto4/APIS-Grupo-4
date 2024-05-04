@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     element: <Catalogo/>,
   },
   {
-    path:'producto/:productoNombre',
+    path:'producto/:productoID',
     element: <Producto/>
   },
   {
