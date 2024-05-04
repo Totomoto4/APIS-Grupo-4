@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext.tsx";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
 import Footer from "../components/Footer.jsx";
@@ -12,6 +12,9 @@ import { Link, useParams } from "react-router-dom";
 
 
 export default function Catalogo() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchQuery = new URLSearchParams(location.search).get("search");
   const categories = ['Comic','Funko','Juego','Ropa'];
 
   const {categoria} = useParams();
@@ -22,7 +25,8 @@ export default function Catalogo() {
 
   useEffect(() => {
     handleCategoryFilter(categoria);
-  }, [categoria]);
+    handleSearch(searchQuery);
+  }, [categoria, searchQuery]);
 
   const handleCategoryFilter = (category) => {
     if (!categories.includes(category)) {
@@ -35,6 +39,16 @@ export default function Catalogo() {
     }
   };
 
+  const handleSearch = (term) => {
+    if (term && term.trim() !== "") {
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(term.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products);
+    }
+  };
 
   const renderProducts = () => {
     return filteredProducts.map((product) => (
@@ -44,7 +58,7 @@ export default function Catalogo() {
 
   return (
     <>
-      <Header/>
+      <Header onSearch={handleSearch} />
       <main className="catalogo-main">
         <div className="catalogo-container">{renderProducts()}</div>
       </main>

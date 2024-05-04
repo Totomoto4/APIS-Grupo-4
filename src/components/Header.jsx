@@ -6,10 +6,11 @@ import Cart from "./Cart"; // Importar el componente Cart
 import DropdownCategorias from "./DropdownCategorias";
 import Account from "./Account";
 
-function Header() {
+function Header({ onSearch = () => {} }){
 
   const [showCartModal, setShowCartModal] = useState(false);
   const [isAdminMode, setIsAdminMode] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
@@ -18,7 +19,14 @@ function Header() {
   const handleToggleMode = () => {
     setIsAdminMode(!isAdminMode);
   };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+  };
   return (
     <header>
       <div className="logo-container">
@@ -26,10 +34,15 @@ function Header() {
         <h1>Kiwik-E-Mart</h1>
       </div>
 
-      <div className="searchBox">
-        <input type="text" placeholder="Buscar productos..." />
-        <button type="button">Buscar</button>
-      </div>
+      <form className="searchBox" onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          placeholder="Buscar productos..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <button type="submit">Buscar</button>
+      </form>
 
       <div className="links">
         <DropdownCategorias></DropdownCategorias>
