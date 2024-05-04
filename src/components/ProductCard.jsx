@@ -3,6 +3,7 @@ import './ProductCard.css';
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -16,11 +17,13 @@ function ProductCard({ product }) {
 
   return (
     <div id="product-card">
+      <Link to={`/producto/${product.name}`}>
+        <img src={product.image} alt={product.name} id="product-image" />
+        <h2 id="product-name">{product.name}</h2>
+        <p id="product-description">{product.description}</p>
+        <p id="product-price">${product.price}</p>
+      </Link>
       <ToastContainer />
-      <img src={product.image} alt={product.name} id="product-image" />
-      <h2 id="product-name">{product.name}</h2>
-      <p id="product-description">{product.description}</p>
-      <p id="product-price">${product.price}</p>
       <div className="add-to-cart-container">
         <button id="add-to-cart-button" onClick={handleAddToCart}>
           Add to Cart

@@ -63,7 +63,7 @@ const Login = () => {
             />
           </label>
           <label>
-            Contraseña
+            Password
             <input
               type="password"
               value={password}
