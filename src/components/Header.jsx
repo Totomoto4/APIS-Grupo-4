@@ -8,6 +8,7 @@ import Cart from "./Cart"; // Importar el componente Cart
 function Header({ categories = [], onCategoryFilter }) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [showCartModal, setShowCartModal] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
@@ -17,6 +18,10 @@ function Header({ categories = [], onCategoryFilter }) {
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
+  };
+
+  const handleToggleMode = () => {
+    setIsAdminMode(!isAdminMode);
   };
 
   return (
@@ -44,7 +49,9 @@ function Header({ categories = [], onCategoryFilter }) {
           <button onClick={handleShowCartModal}>
             <img src={carritoIcono} alt="Carrito de compras" id="Icono-carrito"/>
           </button>
-          <a href="#">Cuenta</a>
+          <a href="#" onClick={handleToggleMode}>
+            {isAdminMode ? 'User' : 'Admin'}
+          </a>
         </div>
       </nav>
       {showCartModal && (

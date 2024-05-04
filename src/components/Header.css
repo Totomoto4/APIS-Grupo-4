@@ -22,6 +22,7 @@ select{
     font-family: 'Simpson';
     color: white;
     cursor: pointer;
+    margin-right: 10px;
 }
 .logo-container {
     display: flex;
