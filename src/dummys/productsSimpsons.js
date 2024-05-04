@@ -35,7 +35,7 @@ export const products = [
     {
       id: 1,
       name: 'Comic #1',
-      description: 'Comic numero #1  de los Simpsons',
+      description: 'Comic numero 1 de los Simpsons',
       price: 9.99,
       image:comic1,
       category: 'Comic',
@@ -43,7 +43,7 @@ export const products = [
     {
         id: 2,
         name: 'Comic #5',
-        description: 'Comic numero #5  de los Simpsons',
+        description: 'Comic numero 5 de los Simpsons',
         price: 9.99,
         image: comic5,
         category: 'Comic',
@@ -51,7 +51,7 @@ export const products = [
       {
         id: 3,
         name: 'Comic #11',
-        description: 'Comic numero #11  de los Simpsons',
+        description: 'Comic numero 11 de los Simpsons',
         price: 9.99,
         image: comic11 ,
         category: 'Comic',
@@ -59,7 +59,7 @@ export const products = [
       {
         id: 4,
         name: 'Comic #15',
-        description: 'Comic numero #15  de los Simpsons',
+        description: 'Comic numero 15 de los Simpsons',
         price: 9.99,
         image:comic15,
         category: 'Comic',
@@ -67,7 +67,7 @@ export const products = [
       {
         id: 5,
         name: 'Comic #36',
-        description: 'Comic numero #  de los Simpsons',
+        description: 'Comic numero 36 de los Simpsons',
         price: 9.99,
         image: comic36,
         category: 'Comic',
@@ -75,7 +75,7 @@ export const products = [
       {
         id: 6,
         name: 'Comic #47',
-        description: 'Comic numero #  de los Simpsons',
+        description: 'Comic numero 47 de los Simpsons',
         price: 9.99,
         image: comic47,
         category: 'Comic',
@@ -83,7 +83,7 @@ export const products = [
       {
         id: 7,
         name: 'Comic #245',
-        description: 'Comic numero #245  de los Simpsons',
+        description: 'Comic numero 245 de los Simpsons',
         price: 9.99,
         image: comic245,
         category: 'Comic',

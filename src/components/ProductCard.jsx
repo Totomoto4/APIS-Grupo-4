@@ -17,11 +17,11 @@ function ProductCard({ product }) {
 
   return (
     <div id="product-card">
-      <Link to={`/producto/${product.name}`}>
+      <Link to={`/producto/${product.id}`}>
         <img src={product.image} alt={product.name} id="product-image" />
         <h2 id="product-name">{product.name}</h2>
         <p id="product-description">{product.description}</p>
-        <p id="product-price">${product.price}</p>
+        <p id="product-price">S{product.price}</p>
       </Link>
       <ToastContainer />
       <div className="add-to-cart-container">

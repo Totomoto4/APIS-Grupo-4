@@ -5,7 +5,7 @@ import Header from "../components/Header.jsx";
 import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
 import Footer from "../components/Footer.jsx";
 
-import "./Homepage.css";
+import "./Catalogo.css";
 
 import { products } from "../dummys/productsSimpsons.js";
 import { Link, useParams } from "react-router-dom";
@@ -45,8 +45,8 @@ export default function Catalogo() {
   return (
     <>
       <Header/>
-      <main>
-        <div className="product-container">{renderProducts()}</div>
+      <main className="catalogo-main">
+        <div className="catalogo-container">{renderProducts()}</div>
       </main>
       <Footer />
     </>

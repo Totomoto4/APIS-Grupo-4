@@ -41,4 +41,4 @@ export const USUARIOS = [
     }
 ];
 
-
+export default USUARIOS;
