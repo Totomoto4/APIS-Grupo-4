@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import carrito_1 from '../imagenes/carrito_1.svg';
+import carrito_1 from '../imagenes/generales/carrito_1.svg';
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
-import Header from './Header';
 
 export default function ShoppingCart() {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);

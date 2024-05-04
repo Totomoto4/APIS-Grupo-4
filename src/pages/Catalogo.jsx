@@ -1,31 +1,54 @@
-import React from 'react';
-import { useContext } from 'react';
-import { UserContext } from '../context/UserContext.tsx';
-import Header from '../components/Header.jsx';
-import ProductCard from '../components/ProductCard.jsx'; // Importa el componente de tarjeta de productos
-import { Link } from 'react-router-dom';
-import './Homepage.css';
-import { products } from '../dummys/products.js'
+import { React, useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext.tsx";
+
+import Header from "../components/Header.jsx";
+import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
+import Footer from "../components/Footer.jsx";
+
+import "./Homepage.css";
+
+import { products } from "../dummys/productsSimpsons.js";
+import { Link, useParams } from "react-router-dom";
 
 
+export default function Catalogo() {
+  const categories = ['Comic','Funko','Juego','Ropa'];
 
-export default function Homepage(){
+  const {categoria} = useParams();
 
-    const { user, updateUser } = useContext(UserContext);
-    console.log(user);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-    return(
-        <section>
-            <Header />
-            <div className="content">
+  console.log(categoria);
 
-                {/* Renderiza las tarjetas de productos */}
-                <div className="product-cards">
-                    {products.map(product => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
+  useEffect(() => {
+    handleCategoryFilter(categoria);
+  }, [categoria]);
+
+  const handleCategoryFilter = (category) => {
+    if (!categories.includes(category)) {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category === category
+      );
+      setFilteredProducts(filtered);
+    }
+  };
+
+
+  const renderProducts = () => {
+    return filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product}/>
+    ));
+  };
+
+  return (
+    <>
+      <Header/>
+      <main>
+        <div className="product-container">{renderProducts()}</div>
+      </main>
+      <Footer />
+    </>
+  );
 }
