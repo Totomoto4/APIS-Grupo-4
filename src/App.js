@@ -6,6 +6,7 @@ import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
 import Homepage from './pages/Homepage.jsx';
 import Catalogo from './pages/Catalogo.jsx';
+import Producto from './pages/Producto.jsx';
 import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
 import { Provider } from 'react-redux';
@@ -15,10 +16,6 @@ import store from './store.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/*',
-    element: <Homepage/>
-  },
-  {
     path:'login',
     element: <Login/>
   },
@@ -27,9 +24,20 @@ const router = createBrowserRouter([
     element: <Register/>
   },
   {
-    path:'catalogo',
+    path:'catalogo/',
     element: <Catalogo/>,
-    
+  },
+  {
+    path:'catalogo/:categoria',
+    element: <Catalogo/>,
+  },
+  {
+    path:'producto/:productoNombre',
+    element: <Producto/>
+  },
+  {
+    path: '/*',
+    element: <Homepage/>
   }
 ])
 

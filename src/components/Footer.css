@@ -1,9 +1,17 @@
 footer{
     display: flex;
     height: 5%;
-    background-color: aqua;
+    background-color: #658e14;
+    margin-top: auto;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Simpson';
+    
+    h1{
+        font-size: 1rem;
+    }
 
     img{
-        height: 4rem;
+        height: 3rem;
     }
 }
