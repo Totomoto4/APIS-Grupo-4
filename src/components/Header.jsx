@@ -4,19 +4,25 @@ import "./Header.css";
 import carritoIcono from "../imagenes/generales/carrito_1.svg";
 import Cart from "./Cart"; // Importar el componente Cart
 import DropdownCategorias from "./DropdownCategorias";
+import Account from "./Account";
 
 function Header() {
 
   const [showCartModal, setShowCartModal] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
 
+  const handleToggleMode = () => {
+    setIsAdminMode(!isAdminMode);
+  };
+
   return (
     <header>
       <div className="logo-container">
-        <img src={logo} alt="Logo" />
+        <img href="Homepage" src={logo} alt="Logo" />
         <h1>Kiwik-E-Mart</h1>
       </div>
 
@@ -33,7 +39,7 @@ function Header() {
           <img src={carritoIcono} alt="Carrito de compras" id="Icono-carrito" />
         </button>
 
-        <a href="#">Cuenta</a>
+        <Account></Account>
       </div>
 
       {showCartModal && (
