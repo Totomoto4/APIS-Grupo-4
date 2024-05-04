@@ -106,7 +106,7 @@ export const products = [
       },
       {
         id: 10 ,
-        name: 'Funko POP Homero 1 ',
+        name: 'Funko POP Homero #1 ',
         description: 'Figura coleccionable Funko POP de Homero',
         price: 25,
         image: funkoHomero,
@@ -114,7 +114,7 @@ export const products = [
       },
       {
         id: 11 ,
-        name: 'Funko POP Homero 2 ',
+        name: 'Funko POP Homero #2 ',
         description: 'Figura coleccionable Funko POP de Homero',
         price: 30,
         image: funkoHomero2,

@@ -17,7 +17,7 @@ function ProductCard({ product }) {
 
   return (
     <div id="product-card">
-      <Link to={{ pathname: `/producto/${product.name}`, state: "jiji" }}>
+      <Link to={`/producto/${product.name}`}>
         <img src={product.image} alt={product.name} id="product-image" />
         <h2 id="product-name">{product.name}</h2>
         <p id="product-description">{product.description}</p>
