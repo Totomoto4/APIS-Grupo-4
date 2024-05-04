@@ -11,6 +11,8 @@ import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 import store from './store.jsx';
+// import UserInterface from './components/UserInterface';
+// import AdminInterface from './components/AdminInterface';
 
 const router = createBrowserRouter([
   {
@@ -40,8 +42,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState({ isAdmin: false });
 
   function updateUser(newValue){
     setUser(newValue);
@@ -50,10 +51,11 @@ function App() {
   return (
     <Provider store={store}> 
       <UserContext.Provider value={{ user, updateUser }}>
-        <RouterProvider router={router} />
+        <RouterProvider router={router}>
+
+        </RouterProvider>
       </UserContext.Provider>
     </Provider>
-    
   );
 }
 

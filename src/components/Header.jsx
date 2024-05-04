@@ -4,26 +4,45 @@ import "./Header.css";
 import carritoIcono from "../imagenes/generales/carrito_1.svg";
 import Cart from "./Cart"; // Importar el componente Cart
 import DropdownCategorias from "./DropdownCategorias";
+import Account from "./Account";
 
-function Header() {
+function Header({ onSearch = () => {} }){
 
   const [showCartModal, setShowCartModal] = useState(false);
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
 
+  const handleToggleMode = () => {
+    setIsAdminMode(!isAdminMode);
+  };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+  };
   return (
     <header>
       <div className="logo-container">
-        <img src={logo} alt="Logo" />
+        <img href="Homepage" src={logo} alt="Logo" />
         <h1>Kiwik-E-Mart</h1>
       </div>
 
-      <div className="searchBox">
-        <input type="text" placeholder="Buscar productos..." />
-        <button type="button">Buscar</button>
-      </div>
+      <form className="searchBox" onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          placeholder="Buscar productos..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <button type="submit">Buscar</button>
+      </form>
 
       <div className="links">
         <DropdownCategorias></DropdownCategorias>
@@ -33,7 +52,7 @@ function Header() {
           <img src={carritoIcono} alt="Carrito de compras" id="Icono-carrito" />
         </button>
 
-        <a href="#">Cuenta</a>
+        <Account></Account>
       </div>
 
       {showCartModal && (

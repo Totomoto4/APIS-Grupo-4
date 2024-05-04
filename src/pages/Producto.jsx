@@ -20,7 +20,7 @@ export default function Producto(){
 
     const dispatch = useDispatch();
 
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
 
     const {productoID} = useParams();
     
@@ -31,19 +31,20 @@ export default function Producto(){
         setCantidad(cantidadActual + 1);
     }
 
-    const handleLessButton = ()=> {
-        const cantidadNueva = cantidad-1;
-        if (cantidadNueva <= 0){
-            setCantidad(0)
-        } else {
-            setCantidad(cantidadNueva);
-        }
-    }
+    const handleLessButton = () => {
+      const cantidadNueva = cantidad - 1;
+      if (cantidadNueva >= 1) {
+        setCantidad(cantidadNueva);
+      }
+    };
 
     const handleAddToCart = () => {
-      dispatch({ type: 'ADD_TO_CART', payload: productoActual });
-      toast(`${productoActual.name} añadido al carrito`, {
-        autoClose: 1500 // Duración del Toast: 1.5 segundos
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: { ...productoActual, cantidad }
+      });
+      toast(`${cantidad} ${productoActual.name} añadidos al carrito`, {
+        autoClose: 1500
       });
     };
 
