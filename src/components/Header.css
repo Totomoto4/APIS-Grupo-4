@@ -7,7 +7,13 @@ header{
     padding: 1rem 2rem;
     box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.377);
     position:relative;
+
+    a{
+        text-decoration: none;
+    }
 }
+
+
 
 .logo-container {
     display: flex;
@@ -15,6 +21,8 @@ header{
     align-items: center;
     margin-bottom: 1rem;
     gap: 1rem;
+    text-decoration: none;
+    color: white;
 
     h1{
         font-size: 2rem;
