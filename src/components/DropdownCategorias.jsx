@@ -10,7 +10,7 @@ export default function DropdownCategorias() {
           <div className="dropdown-content">
             <Link to={"/catalogo/"}>Todas las categorias</Link>
             {categories.map((categoria) => (
-              <Link to={`/catalogo/${categoria}`}>{categoria}</Link>
+              <Link to={`/catalogo/categoria/${categoria}`}>{categoria}</Link>
             ))}
           </div>
         </div>
