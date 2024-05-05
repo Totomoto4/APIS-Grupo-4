@@ -5,6 +5,7 @@ import './Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -15,10 +16,10 @@ const Login = () => {
 
     // Agrega tu lógica de validación aquí
     if (email.trim() !== '' && password.trim() !== '') {
-      // Si los datos son válidos, redirige al usuario a la ruta '/home'
+      const usuario = { email, rol: isAdmin ? 'admin' : 'cliente', nombreUsuario: 'NombreDeUsuario' };
+      localStorage.setItem('usuario', JSON.stringify(usuario));
       navigate('/home');
     } else {
-      // Si los datos no son válidos, muestra un mensaje de error o realiza otra acción
       console.log('Por favor, completa todos los campos.');
     }
   };
