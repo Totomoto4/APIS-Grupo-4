@@ -40,5 +40,3 @@ export const USUARIOS = [
         rol: 'admin'
     }
 ];
-
-export default USUARIOS;
