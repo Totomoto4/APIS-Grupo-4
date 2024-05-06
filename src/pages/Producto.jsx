@@ -54,6 +54,16 @@ export default function Producto(){
         ));
       };
 
+    const renderStockPositivo = () => {
+      return (
+        <button id="ADDTOCART" onClick={handleAddToCart}>Add to cart</button>
+      );
+    };
+
+    const renderStock0 = () => {
+      return <p id="SIN-STOCK">Sin Stock</p>;
+    };
+
     console.log(productoActual);
     console.log(productoID);
 
@@ -80,7 +90,7 @@ export default function Producto(){
                   <button onClick={() => handlePlusButton()}>+</button>
                 </div>
 
-                <button id="ADDTOCART" onClick={handleAddToCart}>Add to cart</button>
+                {productoActual.stock > 0 ? renderStockPositivo() : renderStock0()}
               </section>
             </div>
 
