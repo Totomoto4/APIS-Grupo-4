@@ -39,6 +39,7 @@ export const products = [
       price: 9.99,
       image:comic1,
       category: 'Comic',
+      stock:10
     },
     {
         id: 2,
@@ -47,6 +48,7 @@ export const products = [
         price: 9.99,
         image: comic5,
         category: 'Comic',
+        stock:5
       },
       {
         id: 3,
@@ -55,6 +57,7 @@ export const products = [
         price: 9.99,
         image: comic11 ,
         category: 'Comic',
+        stock:5
       },
       {
         id: 4,
@@ -63,6 +66,7 @@ export const products = [
         price: 9.99,
         image:comic15,
         category: 'Comic',
+        stock:0
       },
       {
         id: 5,
@@ -71,6 +75,7 @@ export const products = [
         price: 9.99,
         image: comic36,
         category: 'Comic',
+        stock:10
       },
       {
         id: 6,
@@ -79,6 +84,7 @@ export const products = [
         price: 9.99,
         image: comic47,
         category: 'Comic',
+        stock:6
       },
       {
         id: 7,
@@ -87,6 +93,7 @@ export const products = [
         price: 9.99,
         image: comic245,
         category: 'Comic',
+        stock:15
       },
       {
         id: 8,
@@ -95,6 +102,7 @@ export const products = [
         price: 25,
         image: funkoAbuelo ,
         category: 'Funko',
+        stock:0
       },
       {
         id: 9,
@@ -103,6 +111,7 @@ export const products = [
         price: 25,
         image: funkoFlanders,
         category: 'Funko',
+        stock:10
       },
       {
         id: 10 ,
@@ -111,6 +120,7 @@ export const products = [
         price: 25,
         image: funkoHomero,
         category: 'Funko',
+        stock:10
       },
       {
         id: 11 ,
@@ -119,6 +129,7 @@ export const products = [
         price: 30,
         image: funkoHomero2,
         category: 'Funko',
+        stock:5
       },
       {
         id: 12 ,
@@ -127,6 +138,7 @@ export const products = [
         price: 25,
         image: funkoLisa ,
         category: 'Funko',
+        stock:10
       },
       {
         id: 13 ,
@@ -135,6 +147,7 @@ export const products = [
         price: 25,
         image: funkoMarge,
         category: 'Funko',
+        stock:12
       },
       {
         id: 14,
@@ -143,6 +156,7 @@ export const products = [
         price: 25,
         image: funkoMoe ,
         category: 'Funko',
+        stock:10
       },
       {
         id:15 ,
@@ -151,6 +165,7 @@ export const products = [
         price: 30,
         image: juegoGuerra ,
         category: 'Juego',
+        stock:10
       },
       {
         id:16 ,
@@ -159,6 +174,7 @@ export const products = [
         price: 35,
         image: juegoClue ,
         category: 'Juego',
+        stock:10
       },
       {
         id: 17,
@@ -167,6 +183,7 @@ export const products = [
         price: 30,
         image: juegoLife ,
         category: 'Juego',
+        stock:10
       },
       {
         id: 18 ,
@@ -175,6 +192,7 @@ export const products = [
         price: 35,
         image: juegoMonopoly ,
         category: 'Juego',
+        stock:10
       },
       {
         id:19,
@@ -183,6 +201,7 @@ export const products = [
         price: 30,
         image: JuegoOperando ,
         category: 'Juego',
+        stock:10
       },
       {
         id: 20 ,
@@ -191,6 +210,7 @@ export const products = [
         price: 15,
         image: ropaBuzo1 ,
         category: 'Ropa',
+        stock:5
       },
       {
         id: 21,
@@ -199,6 +219,7 @@ export const products = [
         price: 15,
         image: ropaBuzo2 ,
         category: 'Ropa',
+        stock:10
       },
       {
         id: 22,
@@ -207,6 +228,7 @@ export const products = [
         price: 10,
         image: ropaGorro1,
         category: 'Ropa',
+        stock:15
       },
       {
         id: 23,
@@ -215,6 +237,7 @@ export const products = [
         price: 10,
         image: ropaGorro2,
         category: 'Ropa',
+        stock:12
       },
       {
         id: 24,
@@ -223,6 +246,7 @@ export const products = [
         price: 15,
         image: ropaRemera1,
         category: 'Ropa',
+        stock:10
       },
       {
         id: 25,
@@ -231,6 +255,7 @@ export const products = [
         price: 12,
         image: ropaRemera2,
         category: 'Ropa',
+        stock:15
       },
       {
         id: 26,
@@ -239,6 +264,7 @@ export const products = [
         price: 12,
         image: ropaRemera3 ,
         category: 'Ropa',
+        stock:12
       },
       {
         id: 27,
@@ -247,6 +273,7 @@ export const products = [
         price: 15,
         image: ropaRemera4 ,
         category: 'Ropa',
+        stock:0
       },
       {
         id: 28 ,
@@ -255,6 +282,7 @@ export const products = [
         price: 10,
         image: ropaRemera5 ,
         category: 'Ropa',
+        stock:15
       }
     ]
       

@@ -15,6 +15,22 @@ function ProductCard({ product }) {
     });
   };
 
+  const renderStockPositivo = ()=>{
+    return(
+      <div className="add-to-cart-container">
+        <button id="add-to-cart-button" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
+      </div>
+    )
+  }
+
+  const renderStock0 = ()=>{
+    return(
+      <p id='SIN-STOCK'>Sin Stock</p>
+    )
+  }
+
   return (
     <div id="product-card">
       <Link to={`/producto/${product.id}`}>
@@ -24,11 +40,8 @@ function ProductCard({ product }) {
         <p id="product-price">S{product.price}</p>
       </Link>
       <ToastContainer />
-      <div className="add-to-cart-container">
-        <button id="add-to-cart-button" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
-      </div>
+      {product.stock > 0 ? renderStockPositivo() : renderStock0() }
+      
     </div>
   );
 }
