@@ -161,7 +161,7 @@ export const products = [
       {
         id:15 ,
         name: 'Guerra de generos',
-        description: 'Juego de mesa guerra de generos ',
+        description: 'Juego de mesa guerra de generos. ',
         price: 30,
         image: juegoGuerra ,
         category: 'Juego',
