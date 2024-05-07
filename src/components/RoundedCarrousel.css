@@ -1,0 +1,50 @@
+.reviewsContainer {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width: 100%;
+    max-height: 1%;
+    
+}
+
+.reviewBox {
+    border-radius: 25px;
+    background: white;
+    padding: 20px;
+    box-sizing: content-box;
+    max-width: 186px;
+    margin: 20px;
+    
+}
+
+.userReview {
+    margin: 0;
+    font-size:large;
+}
+
+.productName {
+    margin: 0;
+    font-size: small;
+    text-decoration: underline;
+    
+}
+
+.review {
+    font-size: smaller;
+}
+
+
+#Perfil-Review {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+#Estrellas {
+    margin-left: 20px;
+    width: 108px;
+    height: 30px;
+}
