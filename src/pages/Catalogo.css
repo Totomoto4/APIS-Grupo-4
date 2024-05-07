@@ -1,0 +1,47 @@
+.catalogo-main {
+    z-index: 0;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.content {
+    padding: 1rem; /* Añade relleno al contenido */
+}
+.product-cards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en múltiples líneas */
+    gap: 1rem; /* Agrega espacio entre las tarjetas */
+    justify-content: center; /* Alinea las tarjetas al centro horizontalmente */
+}
+
+.product-card {
+    width: calc(33.33% - 1rem); /* Toma un tercio del ancho del contenedor y resta el espacio entre las tarjetas */
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* Mantiene el aspecto cuadrado */
+}
+.catalogo-container {
+    background-color: white;
+    min-height:85vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+    width: 70%;
+}
+
+#product-card {
+    width: 300px;
+    /* Ajusta el ancho según tus preferencias */
+    margin: 10px;
+    /* Añade un margen entre las tarjetas */
+}
+
+footer {
+    margin-top: auto;
+}

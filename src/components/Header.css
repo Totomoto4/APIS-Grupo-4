@@ -1,0 +1,191 @@
+header{
+    display: flex;
+    justify-content: space-around;
+    background-color: #658e14;
+    font-family: 'Simpson';
+    color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.377);
+    position:relative;
+
+    a{
+        text-decoration: none;
+    }
+}
+
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    text-decoration: none;
+    color: white;
+
+    h1{
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    img {
+        width: auto;
+        height: 2.5rem;
+    }
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 40%;
+}
+
+.searchBox input[type="text"] {
+    flex-grow: 1;
+    padding: 0.8rem;
+    border: solid #b83241;
+    width: 100%; /* Ajusta el ancho del campo de búsqueda */
+    border-radius: 1rem;
+}
+
+.searchBox button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #c71717;
+    color: white;
+    cursor: pointer;
+}
+
+.searchBox button:hover{
+    background-color: #ecde1a;
+    color: black;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+select{
+    margin: auto;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #c71717;
+    font-family: 'Simpson';
+    color: white;
+    cursor: pointer;
+}
+
+#carrito-link {
+    margin-top: -5px; /* Ajusta el margen superior según sea necesario */
+}
+#Icono-carrito {
+    background-color: #658e14;
+    width: 2rem;
+    height: 2rem;
+}
+
+.PopOverContent{
+    max-width: 50rem;
+    max-height: 50rem;
+    border: 2px solid #b83241;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0,5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.ExitPopover{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 35px;
+    background-color: #658e14;
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+.FinalizarCompra{
+    margin: 7px;
+    background-color: #658e14;
+    color: #b83241;
+    border-radius: 8px;
+    border-width: 0px;
+    cursor: pointer;
+}
+@media (min-width: 48rem) { /* Media query para 768px */
+    #navHeader {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+  
+    .logo-container {
+        margin-bottom: 0;
+    }
+
+    .searchBox {
+        margin-bottom: 0;
+    }
+    .cart-modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      
+      .cart-modal-content {
+        background-color: #658e14;
+        color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+      }
+      
+      .close-button {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+}
+
+#carritobtn{
+    background-color: #658e14;
+    border: none;
+}

@@ -1,18 +1,59 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
+import Homepage from './pages/Homepage.jsx';
+import Catalogo from './pages/Catalogo.jsx';
+import Producto from './pages/Producto.jsx';
+import { UserContext } from './context/UserContext.tsx';
+import { useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './store.jsx';
+
+const router = createBrowserRouter([
+  {
+    path:'login',
+    element: <Login/>
+  },
+  {
+    path:'register',
+    element: <Register/>
+  },
+  {
+    path:'catalogo/',
+    element: <Catalogo/>,
+  },
+  {
+    path:'catalogo/categoria/:categoria',
+    element: <Catalogo/>,
+  },
+  {
+    path:'producto/:productoID',
+    element: <Producto/>
+  },
+  {
+    path: '/*',
+    element: <Homepage/>
+  }
+])
 
 function App() {
+  const [user, setUser] = useState();
+
+  function updateUser(newValue){
+    setUser(newValue);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <Provider store={store}> 
+      <UserContext.Provider value={{ user, updateUser }}>
+        <RouterProvider router={router}>
 
-
-      </header>
-      <h2>APIS grupo 4</h2>
-      <h5>PRueba 2</h5>
-      <h6>PRUeba 3</h6> 
-    </div>
+        </RouterProvider>
+      </UserContext.Provider>
+    </Provider>
   );
 }
 
