@@ -11,32 +11,34 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 // Definir el reductor
 const cartReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'ADD_TO_CART':
-        const productIdToAdd = action.payload.id; // Renombrar la variable aquí
-        if (state.cart[productIdToAdd]) {
-          return {
-            ...state,
-            cart: {
-              ...state.cart,
-              [productIdToAdd]: {
-                ...state.cart[productIdToAdd],
-                cantidad: state.cart[productIdToAdd].cantidad + 1
-              }
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      const productIdToAdd = action.payload.id;
+      const cantidadAgregar = action.payload.cantidad;
+
+      if (state.cart[productIdToAdd]) {
+        return {
+          ...state,
+          cart: {
+            ...state.cart,
+            [productIdToAdd]: {
+              ...state.cart[productIdToAdd],
+              cantidad: state.cart[productIdToAdd].cantidad + cantidadAgregar
             }
-          };
-        } else {
-          return {
-            ...state,
-            cart: {
-              ...state.cart,
-              [productIdToAdd]: {
-                product: action.payload,
-                cantidad: 1
-              }
+          }
+        };
+      } else {
+        return {
+          ...state,
+          cart: {
+            ...state.cart,
+            [productIdToAdd]: {
+              product: action.payload,
+              cantidad: cantidadAgregar
             }
-          };
-        }
+          }
+        };
+      }
       case 'REMOVE_FROM_CART':
         const updatedCart = { ...state.cart };
         const productIdToRemove = action.payload.id; // Renombrar la variable aquí

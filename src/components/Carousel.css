@@ -1,0 +1,83 @@
+
+.carousel-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 35vh;
+  gap: 1rem;
+  padding: 0;
+  margin-top: 1rem;
+
+
+    a {
+      text-decoration: none;
+    flex: 0 0 150px;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px #33333354;
+    position: relative;
+    overflow: hidden;
+    
+    &:nth-of-type(1) {
+      background: url("../imagenes/productos/comic/comic1.webp")
+        no-repeat 50% / cover;
+        background-color: #6dcff6;
+    }
+    &:nth-of-type(2) {
+        background: url("../imagenes/productos/funkos/homero-funko.webp")
+        no-repeat 50% / cover;
+        background-color: #f0762f;
+    }
+    &:nth-of-type(3) {
+        background: url("../imagenes/productos/juegos/juegos-clue.jpg")
+        no-repeat 50% / cover;
+        background-color: #fed420;
+    }
+    &:nth-of-type(4) {
+        background: url("../imagenes/productos/ropa/remera3.jpg")
+        no-repeat 50% / cover;
+        background-color: #d5e4a1;
+    }
+    
+    h2{
+      color: white;
+      background-color: #b83241;
+      padding: 0.5rem;
+      border: solid black;
+      border-radius: 1rem;
+    }
+
+    .carousel-content {
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      opacity: 0;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      transform: translatey(100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+      visibility: hidden;
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &:hover {
+      flex: 0 0 250px;
+      transform: translatey(-1rem);
+    }
+
+    &:hover .carousel-content {
+      opacity: 1;
+      transform: translatey(-1rem);
+      visibility: visible;
+    }
+  }
+}

@@ -1,40 +1,24 @@
-import {React, useState, useEffect, useContext} from "react";
-import { UserContext } from "../context/UserContext.tsx";
+import {React} from "react";
 
 import "./Homepage.css";
-
 import Header from "../components/Header.jsx";
-import ProductCard from "../components/ProductCard.jsx";
 import Footer from "../components/Footer.jsx";
+import Carousel from "../components/Carousel.jsx";
 
-import { products } from "../dummys/productsSimpsons.js";
+import simpsonslogo from "../imagenes/generales/The-Simpsons-Logo-PNG.png";
+import GifSlider from "../components/GifSlider.jsx";
 
 export default function Homepage() {
-  const { user, updateUser } = useContext(UserContext);
-  console.log(user);
-
-  const [filteredProducts, setFilteredProducts] = useState([]);
-
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, []);
-
-  const handleCategoryFilter = (category) => {
-    if (category === "") {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter(
-        (product) => product.category === category
-      );
-      setFilteredProducts(filtered);
-    }
-  };
-
   return (
     <>
-      <Header/>
-      <main>
-        <h1>Agregar pagina principal!</h1>
+      <Header />
+      <main className="homepage-main">
+        
+        <div className="homepage-container">
+        <img id="LOGO-SIMPSONS" src={simpsonslogo} />
+          <Carousel />
+          
+        </div>
       </main>
       <Footer />
     </>

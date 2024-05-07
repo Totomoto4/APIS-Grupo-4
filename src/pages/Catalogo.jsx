@@ -1,6 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
-import { UserContext } from "../context/UserContext.tsx";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
 import Footer from "../components/Footer.jsx";
@@ -8,34 +7,56 @@ import Footer from "../components/Footer.jsx";
 import "./Catalogo.css";
 
 import { products } from "../dummys/productsSimpsons.js";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+const categories = ['Comic','Funko','Juego','Ropa'];
+
+const categoryFilter = (category) =>{
+  if (!categories.includes(category)) {
+    return(products);
+  } else {
+    const filtered = products.filter(
+      (product) => product.category === category
+    );
+    return(filtered);
+  }
+}
+
+const searchBy = (term) => {
+  if (term && term.trim() !== "") {
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(term.toLowerCase())
+    );
+    return(filtered);
+  } else {
+    return(products);
+  }
+};
 
 
 export default function Catalogo() {
-  const categories = ['Comic','Funko','Juego','Ropa'];
+  const location = useLocation();
+  const searchQuery = new URLSearchParams(location.search).get("search");
 
   const {categoria} = useParams();
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
-
   console.log(categoria);
+  console.log(searchQuery);
+
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  console.log(filteredProducts);
 
   useEffect(() => {
-    handleCategoryFilter(categoria);
-  }, [categoria]);
-
-  const handleCategoryFilter = (category) => {
-    if (!categories.includes(category)) {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter(
-        (product) => product.category === category
-      );
-      setFilteredProducts(filtered);
+    let filtered =[];
+    if(categoria){
+      filtered = categoryFilter(categoria);
+    } else{
+      filtered = searchBy(searchQuery);
     }
-  };
-
-
+    setFilteredProducts(filtered)
+  }, [categoria, searchQuery]);
+  
   const renderProducts = () => {
     return filteredProducts.map((product) => (
         <ProductCard key={product.id} product={product}/>

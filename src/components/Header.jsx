@@ -5,31 +5,57 @@ import carritoIcono from "../imagenes/generales/carrito_1.svg";
 import Cart from "./Cart"; // Importar el componente Cart
 import DropdownCategorias from "./DropdownCategorias";
 import Account from "./Account";
+import { Link, useNavigate } from "react-router-dom";
 
-function Header() {
+function Header(){
+
+  const navigate = useNavigate();
 
   const [showCartModal, setShowCartModal] = useState(false);
   const [isAdminMode, setIsAdminMode] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
 
+  /*
   const handleToggleMode = () => {
     setIsAdminMode(!isAdminMode);
+  };*/
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    const term = searchTerm;
+    if (term.trim() !== "") {
+      console.log("navegandoi...")
+      navigate(`/catalogo/?search=${encodeURIComponent(term)}`);
+    }
   };
 
   return (
     <header>
-      <div className="logo-container">
-        <img href="Homepage" src={logo} alt="Logo" />
-        <h1>Kiwik-E-Mart</h1>
-      </div>
+      <Link to={"/"}>
+        <div className="logo-container">
+          <img href="Homepage" src={logo} alt="Logo" />
+          <h1>Kiwik-E-Mart</h1>
+        </div>
+      </Link>
 
-      <div className="searchBox">
-        <input type="text" placeholder="Buscar productos..." />
-        <button type="button">Buscar</button>
-      </div>
+      <form className="searchBox" onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          placeholder="Buscar productos..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <button type="submit">Buscar</button>
+      </form>
 
       <div className="links">
         <DropdownCategorias></DropdownCategorias>
