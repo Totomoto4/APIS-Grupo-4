@@ -52,5 +52,6 @@
 
 .dropdown-content-Ac a:hover {background-color: #ddd; color: black;}
 .dropdownAc:hover .dropbtnAc {background-color: #658e14;}
+.BtnAdmin:hover {background-color: #b8b8b8;}
 .config:hover {background-color: #b8b8b8;}
 .signOut:hover {background-color: #b83241;}
