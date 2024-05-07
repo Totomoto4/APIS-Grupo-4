@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from './redux/actions';
 import './Account.css';
 
-export default function Account() {
-  const [usuario, setUsuario] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const usuarioAlmacenado = JSON.parse(localStorage.getItem('usuario'));
-    if (usuarioAlmacenado) {
-      setUsuario(usuarioAlmacenado);
-      setIsAdmin(usuarioAlmacenado.rol === 'admin');
-    }
-  }, []);
-
+const Account = () => {
+  const usuario = useSelector(state => state.usuario);
+  const isAdmin = useSelector(state => state.isAdmin);
+  const dispatch = useDispatch();
+  
   const handleSignOut = () => {
-    localStorage.removeItem('usuario');
-    window.location.href = '/login';
+    dispatch(logout());
   };
 
   return (
     <div className="dropdownAc">
       <button className="dropbtnAc">Cuenta</button>
       <div className="dropdown-content-Ac">
-        <h4>{usuario ? usuario.nombreUsuario : 'Usuario Invitado'}</h4>
-        <button className='config'>Configuración</button>
+        <h4>{usuario ? usuario.nombre : 'Usuario Invitado'}</h4>
+        <button className='config'>Configuraciones</button>
         {isAdmin && <button className='BtnAdmin'>Publicaciones</button>}
         <button className='signOut' onClick={handleSignOut}>Cerrar Sesión</button>
       </div>
     </div>
   );
-}
+};
+
+export default Account;
