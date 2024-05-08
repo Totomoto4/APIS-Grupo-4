@@ -43,7 +43,7 @@ function Header(){
       <Link to={"/"}>
         <div className="logo-container">
           <img href="Homepage" src={logo} alt="Logo" />
-          <h1>Kiwik-E-Mart</h1>
+          <h1>Kwik-E-Mart</h1>
         </div>
       </Link>
 
