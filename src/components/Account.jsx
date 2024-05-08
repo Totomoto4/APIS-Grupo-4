@@ -1,6 +1,7 @@
-import React from 'react';
+
+import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import './Account.css';
-import { useContext } from 'react';
 import { UserContext } from '../context/UserContext.tsx';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 
@@ -14,14 +15,19 @@ const Account = () => {
     navigate('/login')
   };
 
+  const handlePublicaciones = () => {
+    navigate('/administration')
+  };
+
+
   return (
     <div className="dropdownAc">
       <button className="dropbtnAc">Cuenta</button>
       <div className="dropdown-content-Ac">
         <h4>{user ? user.nombreUsuario : 'Usuario Invitado'}</h4>
         <button className='config'>Configuraciones</button>
-        {isAdmin && <button className='BtnAdmin'>Publicaciones</button>}
-        <button className='signOut' onClick={ handleSignOut }>Cerrar Sesión</button>
+        {isAdmin && <button className='BtnAdmin' onClick={handlePublicaciones}>Publicaciones</button>}
+        <button className='signOut' onClick={ handleSignOut }>{user ? 'Cerrar sesion' : 'Lon In'}</button>
       </div>
     </div>
   );

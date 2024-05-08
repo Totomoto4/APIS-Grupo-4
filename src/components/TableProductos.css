@@ -1,0 +1,115 @@
+.admin-container{
+    text-align: center;
+}
+
+.admin-product-container{
+    .admin-image-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 80%;
+
+        img{
+            width: 100%;
+            max-height: 100%;
+            box-shadow: 0 0 3px 3px rgba(17, 17, 17, 0.377);
+        }
+    }
+
+    #boton-desactivador{
+        font-family: 'Simpson';
+        border: solid black;
+        padding: 1rem;
+        background-color: #658e14;
+        color: #ecde1a;
+        border-radius: 1.2rem;
+
+    }
+
+    #TABLE-INFO{
+        width: 100%;
+
+        input{
+            width: 100%;
+            border: none;
+            padding: 0.5rem;
+            font-size: medium;
+            font-weight: bold;
+        }
+        p{
+            margin: 0;
+            font-size: medium;
+            padding: 0.5rem;
+        }
+    }
+}
+
+#TABLE-GENERAL{
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        position: sticky;
+        top: 0;
+        
+        th {
+            background-color: #658e14;
+            text-align: center;
+            padding: 1rem;
+        }
+    }
+
+    .sin-stock{
+        background-color: #fc744a70;
+    }
+    
+    td {
+        padding: 15px;
+        background-color: rgba(235, 235, 235, 0.377);
+        color: #000000;
+    }
+}
+
+.product-row:hover{
+    background-color: rgba(247, 247, 247, 0.733);
+}
+
+#ACEPTAR-BTN {
+    font-family: 'Simpson';
+    border: solid black;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #658e14;
+    color: #ecde1a;
+    border-radius: 1.2rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: medium;
+}
+
+#ACEPTAR-BTN:hover{
+    background-color: #ecde1a;
+    color: #000000;
+}
+
+.producto-info-admin{
+    width: 40%;
+}
+
+.left-header{
+    width: 25%;
+    background-color: #658e14;
+}
+
+.right-datacell{
+    width: 75%;
+
+}
+
+
+
+
+
+
+
