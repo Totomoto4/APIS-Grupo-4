@@ -12,8 +12,6 @@ import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 import store from './store.jsx';
-// import UserInterface from './components/UserInterface';
-// import AdminInterface from './components/AdminInterface';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +45,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  const [user, setUser] = useState({ isAdmin: false });
+  const [user, setUser] = useState();
 
   function updateUser(newValue){
     setUser(newValue);
