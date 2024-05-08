@@ -5,7 +5,7 @@ export const USUARIOS = [
         apellido: 'Zanon',
         email: 'admin@gmail.com',
         contraseña: '12345',
-        rol: 'cliente'
+        rol: 'admin'
     },
     {
         nombreUsuario: 'MariaLopez',

@@ -10,8 +10,9 @@ const AdminInterface = () => {
     <div>
       <Header />
       <main className="admin-main">
-        <div className='admin-container'>
-          <TableProductos/>
+        <h1>Panel de administrador</h1>
+        <div className="admin-container">
+          <TableProductos />
         </div>
       </main>
 
