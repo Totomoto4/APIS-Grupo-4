@@ -1,0 +1,96 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        position: sticky;
+        top: 0;
+        
+        th {
+            background-color: #658e14;
+            text-align: left;
+            padding: 1rem;
+        }
+    }
+    
+    td {
+        padding: 15px;
+        background-color: rgba(235, 235, 235, 0.377);
+        color: #000000;
+    }
+}
+
+.product-row:hover{
+    background-color: rgba(247, 247, 247, 0.733);
+}
+
+.active{
+    background-color: #c9fc6323;
+    width: 100%;
+    border: solid #658e14;
+}
+
+
+.admin-product-container{
+    margin-top: 1rem;
+    border: solid #b83241;
+    background-color: rgb(226, 226, 226);
+    width: 80%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+
+    .product-image-container{
+        height: 35vh;
+        background-color: white;
+        border: solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+
+        img{
+            height: 100%;
+        }
+    }
+
+    .product-information{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        padding: 1rem;
+        
+        h1{
+            font-size: 2rem;
+            color: black;
+        }
+
+        #ADDTOCART{
+            background-color: #b83241;
+            color: white;
+            padding: 0.5rem 0;
+            font-size: large;
+            font-family: 'Simpson';
+            border-radius: 1rem;
+            width: 100%;
+        }
+
+        #ADDTOCART:hover{
+            background-color: #ecde1a;
+            color: black;
+        }
+    }
+}
+
+.admin-product-activo{
+    position: absolute;
+    margin-top: 0;
+}
+
+
+
+
+
