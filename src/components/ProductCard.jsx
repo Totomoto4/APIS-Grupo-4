@@ -9,7 +9,7 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
+    dispatch({ type: 'ADD_TO_CART', payload: {...product, cantidad: 1} });
     toast(`${product.name} añadido al carrito`, {
       autoClose: 1500 // Duración del Toast: 1.5 segundos
     });
