@@ -1,17 +1,17 @@
 import React from 'react';
 import './ProductCard.css';
 import { useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+import toast, { Toaster } from "react-hot-toast";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_TO_CART', payload: {...product, cantidad: 1} });
-    toast(`${product.name}añadido al carrito`, {
-      autoClose: 1500 // Duración del Toast: 1.5 segundos
+    toast.success(`${product.name} anadido al carrito`,{
+      onClick: false 
     });
   };
 
@@ -38,8 +38,8 @@ function ProductCard({ product }) {
         <h2 id="product-name">{product.name}</h2>
         <p id="product-description">{product.description}</p>
         <p id="product-price">S{product.price}</p>
+      <Toaster />
       </Link>
-      <ToastContainer />
       {product.stock > 0 ? renderStockPositivo() : renderStock0() }
       
     </div>
