@@ -45,20 +45,10 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  const [user, setUser] = useState();
-
-  function updateUser(newValue){
-    setUser(newValue);
-  }
-
   return (
-    <Provider store={store}> 
-      <UserContext.Provider value={{ user, updateUser }}>
-        <RouterProvider router={router}>
-
-        </RouterProvider>
-      </UserContext.Provider>
-    </Provider>
+    <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
   );
 }
 

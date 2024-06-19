@@ -28,14 +28,14 @@ export default function RoundedCarrousel(){
             <img id="Perfil-Review"src={Lisa} alt=''/><img id="Estrellas"src={est4} alt=''/>
             <h3 class= 'userReview'>Lisa Simpson</h3>
             <Link to={"/producto/12"}><h4 class= 'productName'>Funko POP Lisa</h4></Link>
-            <p class = 'review'>Esperaba un poco mas en terminos de calidad por el precio. No obstante, sigue siendo una gran pieza para mi colección</p>
+            <p class = 'review'>Esperaba un poco mas en terminos de calidad por el precio. No obstante, sigue siendo una gran pieza para mi colección.</p>
         </div>
 
         <div class="reviewBox">
             <img id="Perfil-Review"src={Alcalde} alt=''/><img id="Estrellas"src={est5} alt=''/>
             <h3 class= 'userReview'>Alcalde Diamante</h3>
             <Link to={"/producto/23"}><h4 class= 'productName'>Gorro oveja</h4> </Link>
-            <p class = 'review'>Gorra genial! Diseño llamativo que refleja uno delos grnades personajes de Springfield. Calidad sólida.</p>
+            <p class = 'review'>Gorra genial! Dibujo llamativo que refleja uno de los grandes personajes de Springfield. Calidad sólida.</p>
         </div>
 
         <div class="reviewBox">
@@ -49,7 +49,7 @@ export default function RoundedCarrousel(){
             <img id="Perfil-Review"src={Jeff} alt=''/><img id="Estrellas"src={est1} alt=''/>
             <h3 class= 'userReview'>Jeff Albertson</h3>
             <Link to={"/producto/4"}><h4 class= 'productName'>Comic 15</h4></Link>
-            <p class = 'review'>El arte es decente, pero mi participación es mínima. La trama es floja y carece de emoción. En resumen, es un cómic decepcionante, para los fans que esperaban mas del personaje</p>
+            <p class = 'review'>El arte es decente, pero mi participación es minima. La trama es floja y carece de emoción. En resumen, es un cómic decepcionante, para los fans que esperaban mas del personaje.</p>
         </div>
 
         

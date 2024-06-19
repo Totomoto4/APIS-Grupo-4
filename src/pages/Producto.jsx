@@ -1,10 +1,8 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard.jsx"
-
+import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-
 import { products } from "../dummys/productsSimpsons.js";
 import { Link, useParams} from "react-router-dom";
 import { useState } from "react";
@@ -43,8 +41,8 @@ export default function Producto(){
         type: 'ADD_TO_CART',
         payload: { ...productoActual, cantidad }
       });
-      toast(`${cantidad} ${productoActual.name} añadidos al carrito`, {
-        autoClose: 1500
+      toast.success(`${cantidad} ${productoActual.name} anadido al carrito`,{
+        onClick: false 
       });
     };
 
