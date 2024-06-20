@@ -8,9 +8,9 @@ export default function DropdownCategorias() {
         <div className="dropdown">
           <button className="dropbtn">Categorias</button>
           <div className="dropdown-content">
-            <Link to={"/catalogo/"}>Todas las categorias</Link>
+            <Link to={"/catalogo/"} key='all'>Todas las categorias</Link>
             {categories.map((categoria) => (
-              <Link to={`/catalogo/categoria/${categoria}`}>{categoria}</Link>
+              <Link to={`/catalogo/categoria/${categoria}`} key={categoria}>{categoria}</Link>
             ))}
           </div>
         </div>

@@ -20,22 +20,22 @@
     overflow: hidden;
     
     &:nth-of-type(1) {
-      background: url("../imagenes/productos/comic/comic1.webp")
+      background: url("../imagenes/productos/comic1.webp")
         no-repeat 50% / cover;
         background-color: #6dcff6;
     }
     &:nth-of-type(2) {
-        background: url("../imagenes/productos/funkos/homero-funko.webp")
+        background: url("../imagenes/productos/homero-funko.webp")
         no-repeat 50% / cover;
         background-color: #f0762f;
     }
     &:nth-of-type(3) {
-        background: url("../imagenes/productos/juegos/juegos-clue.jpg")
+        background: url("../imagenes/productos/juegos-clue.jpg")
         no-repeat 50% / cover;
         background-color: #fed420;
     }
     &:nth-of-type(4) {
-        background: url("../imagenes/productos/ropa/remera3.jpg")
+        background: url("../imagenes/productos/remera3.jpg")
         no-repeat 50% / cover;
         background-color: #d5e4a1;
     }

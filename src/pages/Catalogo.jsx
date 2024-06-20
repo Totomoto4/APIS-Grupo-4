@@ -1,63 +1,67 @@
-import { React, useState, useEffect, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { React, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
 import Footer from "../components/Footer.jsx";
+import { fetchAllProducts, fetchProduct, fetchProductsByCategory } from "../funcionesFetch/fetchProducts.js";
 
 import "./Catalogo.css";
 
-import { products } from "../dummys/productsSimpsons.js";
 import { useParams } from "react-router-dom";
 
-const categories = ['Comic','Funko','Juego','Ropa'];
-
-const categoryFilter = (category) =>{
-  if (!categories.includes(category)) {
-    return(products);
-  } else {
-    const filtered = products.filter(
-      (product) => product.category === category
-    );
-    return(filtered);
-  }
-}
-
-const searchBy = (term) => {
+const searchBy = (term, productosIniciales) => {
   if (term && term.trim() !== "") {
-    const filtered = products.filter((product) =>
+    const filtered = productosIniciales.filter((product) =>
       product.name.toLowerCase().includes(term.toLowerCase())
     );
     return(filtered);
   } else {
-    return(products);
+    return([]);
   }
 };
 
-
 export default function Catalogo() {
-  const location = useLocation();
+
+  const location = useLocation()
+
   const searchQuery = new URLSearchParams(location.search).get("search");
 
   const {categoria} = useParams();
 
-  console.log(categoria);
-  console.log(searchQuery);
-
-  const [filteredProducts, setFilteredProducts] = useState(products);
-
-  console.log(filteredProducts);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    let filtered =[];
-    if(categoria){
-      filtered = categoryFilter(categoria);
-    } else{
-      filtered = searchBy(searchQuery);
-    }
-    setFilteredProducts(filtered)
-  }, [categoria, searchQuery]);
-  
+    const loadProducts = async () => {
+      try {
+        let fetchedProducts = [];
+        if(categoria){
+          fetchedProducts = await fetchProductsByCategory(categoria);
+        } else {
+          fetchedProducts = await fetchAllProducts(); // Espera a que la promesa se resuelva y obtiene los productos
+          if(searchQuery){
+            fetchedProducts = searchBy(searchQuery,fetchedProducts);
+          }
+        }
+        
+        console.log('Productos obtenidos:', fetchedProducts); // Verifica que obtienes el array de productos
+        setFilteredProducts(fetchedProducts); // Actualiza el estado con los productos obtenidos
+      } catch (error) {
+        console.error('Error al obtener productos:', error);
+      }
+    };  
+
+    loadProducts(); // Llama a la función asincrónica para cargar los productos
+  }, [categoria, searchQuery]); 
+
   const renderProducts = () => {
+    if(filteredProducts.length === 0){
+      return(
+        <div>
+          <h2>Ay caramba!</h2>
+          <p>No hay productos para esa busqueda!</p>
+        </div>
+      )
+    }
     return filteredProducts.map((product) => (
         <ProductCard key={product.id} product={product}/>
     ));

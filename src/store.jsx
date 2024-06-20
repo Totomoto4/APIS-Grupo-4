@@ -8,6 +8,7 @@ const initialCartState = {
 // Definir las acciones
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const CLEAR_CART = 'CLEAR_CART';
 
 // Definir el reductor para el carrito
 const cartReducer = (state = initialCartState, action) => {
@@ -69,6 +70,10 @@ const initialUserState = {
   user: null
 };
 
+// Definir las acciones del usuario
+const SET_USER = 'SET_USER';
+const LOGOUT = 'LOGOUT';
+
 // Definir el reductor para el usuario
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
@@ -87,10 +92,40 @@ const userReducer = (state = initialUserState, action) => {
   }
 };
 
+// Definir el estado inicial para el token
+const initialTokenState = {
+  token: null
+};
+
+const SET_TOKEN = 'SET_TOKEN';
+const REMOVE_TOKEN = 'REMOVE_TOKEN';
+
+// Definir el reductor para el token
+const tokenReducer = (state = initialTokenState, action) => {
+  switch (action.type) {
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload
+      };
+    case REMOVE_TOKEN:
+      return {
+        ...state,
+        token: null
+      };
+    default:
+      return state;
+  }
+};
+
+
+
+
 // Combinar los reductores
 const rootReducer = combineReducers({
   cart: cartReducer,
-  user: userReducer
+  user: userReducer,
+  token: tokenReducer
 });
 
 // Crear la store de Redux
