@@ -28,9 +28,8 @@ const Account = () => {
       <button className="dropbtnAc">Cuenta</button>
       <div className="dropdown-content-Ac">
         <h4>{user ? user.nombreUsuario : 'Usuario Invitado'}</h4>
-        <button className='config'>Configuraciones</button>
         {isAdmin && <button className='BtnAdmin' onClick={handlePublicaciones}>Publicaciones</button>}
-        <button className='signOut' onClick={ handleSignOut }>{user ? 'Cerrar sesion' : 'Lon In'}</button>
+        <button className='signOut' onClick={ handleSignOut }>{user ? 'Cerrar sesion' : 'Log In'}</button>
       </div>
     </div>
   );

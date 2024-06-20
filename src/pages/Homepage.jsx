@@ -6,7 +6,6 @@ import Footer from "../components/Footer.jsx";
 import Carousel from "../components/Carousel.jsx";
 
 import simpsonslogo from "../imagenes/generales/The-Simpsons-Logo-PNG.png";
-import GifSlider from "../components/GifSlider.jsx";
 import RoundedCarrousel from "../components/RoundedCarrousel.jsx";
 
 export default function Homepage() {

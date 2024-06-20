@@ -2,7 +2,6 @@ import React from 'react';
 import './ProductCard.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductCard({ product }) {
@@ -31,10 +30,33 @@ function ProductCard({ product }) {
     )
   }
 
+  const getImageSource = () => {
+
+    if (!product.imageData || typeof product.imageData !== 'string') {
+      return ''; // Manejar caso donde product.imageData no está definido o no es una cadena válida
+    }
+
+
+    const base64Prefix = 'data:image/';
+    let imageExtension = 'png'; // Default to PNG if no extension is detected
+
+    // Detect JPEG
+    if (product.imageData.startsWith('/9j/')) {
+      imageExtension = 'jpeg';
+    }
+
+    // Detect WebP
+    if (product.imageData.startsWith('UklGR')) {
+      imageExtension = 'webp';
+    }
+
+    return `${base64Prefix}${imageExtension};base64, ${product.imageData}`;
+  };
+
   return (
     <div id="product-card">
       <Link to={`/producto/${product.id}`}>
-        <img src={product.image} alt={product.name} id="product-image" />
+        <img src={getImageSource()} alt={product.name} id="product-image" />
         <h2 id="product-name">{product.name}</h2>
         <p id="product-description">{product.description}</p>
         <p id="product-price">S{product.price}</p>
