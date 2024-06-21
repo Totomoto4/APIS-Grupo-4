@@ -12,7 +12,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
   const [address, setAddress] = useState("");
-  const [total, setTotal] = useState(0); 
+  const [total, setTotal] = useState(0);
 
   const validarCVV = (cvc) => {
     const regex = /^[0-9]{3}$/;
@@ -101,7 +101,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="number"
               name="number"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => setNumber(e.target.value.slice(0, 16))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -137,7 +137,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="expiry"
               name="expiry"
               value={expiry}
-              onChange={(e) => setExpiry(e.target.value)}
+              onChange={(e) => setExpiry(e.target.value.slice(0, 5))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -149,7 +149,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="cvc"
               name="cvc"
               value={cvc}
-              onChange={(e) => setCvc(e.target.value)}
+              onChange={(e) => setCvc(e.target.value.slice(0, 3))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -161,7 +161,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="total"
               name="total"
               value={total}
-              onChange={(e) => setTotal(parseFloat(e.target.value))}
+              onChange={(e) => setTotal(parseFloat(e.target.value).toFixed(2))}
             />
           </div>
           <button type="button" onClick={handleConfirm} className="btn btn-primary">
