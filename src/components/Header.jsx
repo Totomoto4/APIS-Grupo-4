@@ -71,9 +71,6 @@ function Header(){
       {showCartModal && (
         <div className="cart-modal">
           <div className="cart-modal-content">
-            <span className="close-button" onClick={handleShowCartModal}>
-              X
-            </span>
             <Cart setShowCartModal={setShowCartModal} />
           </div>
         </div>

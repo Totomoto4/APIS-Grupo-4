@@ -46,14 +46,6 @@ const Register = () => {
             />
           </label>
 
-          <label>
-            Nombre de usuario:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value.trim())}
-            />
-          </label>
 
           <label>
             Correo electrónico:
@@ -72,18 +64,6 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-
-          <fieldset>
-            <div className='radiobutton-container'>
-              <input type="radio" id="vendedor" name="categoria" value="vendedor"/>
-              <label for="vendedor">Quiero vender</label>
-            </div>
-
-            <div className='radiobutton-container'>
-              <input type="radio" id="cliente" name="categoria" value="cliente" checked/>
-              <label for="cliente">Quiero comprar</label>
-            </div>
-          </fieldset>
 
           <button type="submit">Registrarse</button>
         </form>

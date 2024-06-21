@@ -1,34 +1,34 @@
-import comic1 from '../imagenes/productos/comic/comic1.webp'
-import comic5 from '../imagenes/productos/comic/comic5.jpg'
-import comic11 from '../imagenes/productos/comic/comic11.jpg'
-import comic15 from '../imagenes/productos/comic/comic15.webp'
-import comic36 from '../imagenes/productos/comic/comic36.jpg'
-import comic47 from '../imagenes/productos/comic/comic47.webp'
-import comic245 from '../imagenes/productos/comic/comic245.webp'
+import comic1 from '../imagenes/productos/comic1.webp'
+import comic5 from '../imagenes/productos/comic5.jpg'
+import comic11 from '../imagenes/productos/comic11.jpg'
+import comic15 from '../imagenes/productos/comic15.webp'
+import comic36 from '../imagenes/productos/comic36.jpg'
+import comic47 from '../imagenes/productos/comic47.webp'
+import comic245 from '../imagenes/productos/comic245.webp'
 
-import funkoAbuelo from '../imagenes/productos/funkos/abuelo-funko.webp'
-import funkoFlanders from '../imagenes/productos/funkos/flanders-funko.webp'
-import funkoHomero from '../imagenes/productos/funkos/homero-funko.webp'
-import funkoHomero2 from '../imagenes/productos/funkos/homero-funko-2.jpg'
-import funkoLisa from '../imagenes/productos/funkos/lisa-funko.webp'
-import funkoMarge from '../imagenes/productos/funkos/marge-funko.webp'
-import funkoMoe from '../imagenes/productos/funkos/moe-funko.png'
+import funkoAbuelo from '../imagenes/productos/abuelo-funko.webp'
+import funkoFlanders from '../imagenes/productos/flanders-funko.webp'
+import funkoHomero from '../imagenes/productos/homero-funko.webp'
+import funkoHomero2 from '../imagenes/productos/homero-funko-2.jpg'
+import funkoLisa from '../imagenes/productos/lisa-funko.webp'
+import funkoMarge from '../imagenes/productos/marge-funko.webp'
+import funkoMoe from '../imagenes/productos/moe-funko.png'
 
-import juegoGuerra from '../imagenes/productos/juegos/jeugos-guerra.webp'
-import juegoClue from '../imagenes/productos/juegos/juegos-clue.jpg'
-import juegoLife from '../imagenes/productos/juegos/juegos-life.webp'
-import juegoMonopoly from '../imagenes/productos/juegos/juegos-monopoly.webp'
-import JuegoOperando from '../imagenes/productos/juegos/juegos-operando.jpg'
+import juegoGuerra from '../imagenes/productos/juegos-guerra.webp'
+import juegoClue from '../imagenes/productos/juegos-clue.jpg'
+import juegoLife from '../imagenes/productos/juegos-life.webp'
+import juegoMonopoly from '../imagenes/productos/juegos-monopoly.webp'
+import JuegoOperando from '../imagenes/productos/juegos-operando.jpg'
 
-import ropaBuzo1 from '../imagenes/productos/ropa/buzo1.webp'
-import ropaBuzo2 from '../imagenes/productos/ropa/buzo2.webp'
-import ropaGorro1 from '../imagenes/productos/ropa/gorro1.jpg'
-import ropaGorro2 from '../imagenes/productos/ropa/gorro2.jpg'
-import ropaRemera1 from '../imagenes/productos/ropa/remera1.jpg'
-import ropaRemera2 from '../imagenes/productos/ropa/remra2.jpg'
-import ropaRemera3 from '../imagenes/productos/ropa/remera3.jpg'
-import ropaRemera4 from '../imagenes/productos/ropa/remera4.jpg'
-import ropaRemera5 from '../imagenes/productos/ropa/remera5.webp'
+import ropaBuzo1 from '../imagenes/productos/buzo1.webp'
+import ropaBuzo2 from '../imagenes/productos/buzo2.webp'
+import ropaGorro1 from '../imagenes/productos/gorro1.jpg'
+import ropaGorro2 from '../imagenes/productos/gorro2.jpg'
+import ropaRemera1 from '../imagenes/productos/remera1.jpg'
+import ropaRemera2 from '../imagenes/productos/remera2.jpg'
+import ropaRemera3 from '../imagenes/productos/remera3.jpg'
+import ropaRemera4 from '../imagenes/productos/remera4.jpg'
+import ropaRemera5 from '../imagenes/productos/remera5.webp'
 
 
 export const products = [
@@ -285,5 +285,3 @@ export const products = [
         stock:15
       }
     ]
-      
-      

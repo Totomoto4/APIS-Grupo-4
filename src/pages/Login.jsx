@@ -4,7 +4,7 @@ import './Login.css';
 
 import { USUARIOS } from '../dummys/usuariosDummy.js';
 import { UserContext } from '../context/UserContext.tsx';
-
+import { useDispatch } from 'react-redux';
 import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
 
 //Esta funcionalidad sera del backend, es temporal.
@@ -25,9 +25,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //State de user
-  const {user , updateUser} = useContext(UserContext);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -37,13 +35,10 @@ const Login = () => {
     console.log('Contraseña:', password);
 
     const usuarioEncontrado = authUser(email, password);
-
     if (usuarioEncontrado) {
-      // Si los datos son válidos, redirige al usuario a la ruta '/home'
-      updateUser(usuarioEncontrado);
+      dispatch({ type: 'SET_USER', payload: usuarioEncontrado });
       navigate('/home');
     } else {
-      // Si los datos no son válidos, muestra un mensaje de error o realiza otra acción
       console.log('Los datos son incorrectos');
     }
   };

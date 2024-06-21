@@ -22,3 +22,25 @@
   .remove-button:hover {
     background-color: #0056b3; /* Color de fondo al pasar el mouse */
   }
+
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0%;
+  }
+  
+  .custom-close-button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+    margin-top: -30px;
+  }
+  
+  .custom-close-button:hover {
+    color: red; /* Cambia el color al pasar el mouse */
+    background-color: transparent;
+  }

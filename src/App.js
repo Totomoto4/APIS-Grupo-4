@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx';
 import Homepage from './pages/Homepage.jsx';
 import Catalogo from './pages/Catalogo.jsx';
 import Producto from './pages/Producto.jsx';
+import AdminInterface from './pages/AdminInterface.jsx';
 import { UserContext } from './context/UserContext.tsx';
 import { useState } from 'react';
 import { Provider } from 'react-redux';
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path:'register',
     element: <Register/>
+  },
+  {
+    path: 'administration',
+    element: <AdminInterface/>
   },
   {
     path:'catalogo/',
@@ -40,20 +45,10 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  const [user, setUser] = useState();
-
-  function updateUser(newValue){
-    setUser(newValue);
-  }
-
   return (
-    <Provider store={store}> 
-      <UserContext.Provider value={{ user, updateUser }}>
-        <RouterProvider router={router}>
-
-        </RouterProvider>
-      </UserContext.Provider>
-    </Provider>
+    <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
   );
 }
 
