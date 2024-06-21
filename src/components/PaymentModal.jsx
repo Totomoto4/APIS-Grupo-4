@@ -4,7 +4,7 @@ import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import "./PaymentModal.css";
 
-const PaymentModal = ({ onConfirm, onClose }) => {
+const PaymentModal = ({ onConfirm, onClose, total }) => {
   const [number, setNumber] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -12,7 +12,6 @@ const PaymentModal = ({ onConfirm, onClose }) => {
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
   const [address, setAddress] = useState("");
-  const [total, setTotal] = useState(0);
 
   const validarCVV = (cvc) => {
     const regex = /^[0-9]{3}$/;
@@ -35,10 +34,6 @@ const PaymentModal = ({ onConfirm, onClose }) => {
     return (parseInt(año) > añoActual || (parseInt(año) === añoActual && parseInt(mes) >= mesActual));
   };
 
-  const limitarDecimales = (total) => {
-    return total.toFixed(2);
-  };
-
   const handleConfirm = () => {
     if (!validarCVV(cvc)) {
       alert("CVV no es válido");
@@ -55,8 +50,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
       return;
     }
 
-    const totalLimite = limitarDecimales(total);
-    alert(`Total a pagar: ${totalLimite}`);
+    alert(`Total a pagar: ${total.toFixed(2)}`);
 
     onConfirm();
   };
@@ -137,7 +131,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="expiry"
               name="expiry"
               value={expiry}
-              onChange={(e) => setExpiry(e.target.value.slice(0, 5))}
+              onChange={(e) => setExpiry(e.target.value.slice(0, 6))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -160,8 +154,8 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               className="form-control"
               id="total"
               name="total"
-              value={total}
-              onChange={(e) => setTotal(parseFloat(e.target.value).toFixed(2))}
+              value={total.toFixed(2)}
+              readOnly
             />
           </div>
           <button type="button" onClick={handleConfirm} className="btn btn-primary">

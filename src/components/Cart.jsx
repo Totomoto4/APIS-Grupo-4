@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './Cart.css'; // Importa tu archivo CSS
+import './Cart.css'; 
 import PaymentModal from './PaymentModal';
 
 const Cart = ({ setShowCartModal }) => {
@@ -19,13 +19,11 @@ const Cart = ({ setShowCartModal }) => {
       return acc + product.price * cantidad;
     }, 0);
 
-    // Aplicar descuento si está activo
     if (discountApplied) {
-      // Lógica para aplicar descuento (ejemplo: 10%)
-      total *= 0.9; // Reducir el total en un 10%
+      total *= 0.9; 
     }
 
-    return total.toFixed(2); // Asegurarse de devolver el total con dos decimales
+    return total.toFixed(2); 
   };
 
   const handleCheckout = () => {
@@ -39,18 +37,17 @@ const Cart = ({ setShowCartModal }) => {
   const handleConfirmPayment = () => {
     alert('Compra realizada con éxito');
     dispatch({ type: 'CLEAR_CART' });
-    setShowCartModal(false); // Cerrar el modal del carrito
-    setShowPaymentModal(false); // Cerrar el modal de pago
+    setShowCartModal(false); 
+    setShowPaymentModal(false); 
   };
 
   const applyDiscount = () => {
-    // Aquí podrías validar el código de descuento si es necesario
     setDiscountApplied(true);
   };
 
   const handleCloseCart = () => {
-    setShowCartModal(false); // Cerrar el modal del carrito
-    setShowPaymentModal(false); // Cerrar el modal de pago
+    setShowCartModal(false);
+    setShowPaymentModal(false); 
   };
 
   return (
@@ -93,6 +90,7 @@ const Cart = ({ setShowCartModal }) => {
       )}
       {showPaymentModal && (
         <PaymentModal
+          total={parseFloat(calculateTotal())}
           onConfirm={handleConfirmPayment}
           onClose={() => setShowPaymentModal(false)}
         />
