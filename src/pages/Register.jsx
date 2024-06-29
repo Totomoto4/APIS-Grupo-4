@@ -1,25 +1,52 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { register } from '../funcionesFetch/auth';
 import './Register.css';
 
 import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
 
-//ESTA FUNCION SERA IMPLEMENTADA EN BACKEND
-function verificarDisponibilidad(email){
-}
-
-
 const Register = () => {
-  const [name, setName]= useState('');
-  const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    administrator: false,
+    password: ''
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Previene el comportamiento por defecto de enviar el formulario
+    console.log('Datos del formulario:', formData);
+
+    if (formData.name && formData.lastName && formData.email && formData.password) {
+      try {
+        const response = await register(formData);
+        if (response.error) {
+          
+        } else {
+          console.log('Registro exitoso:', response);
+          // Aquí puedes redirigir al usuario o limpiar el formulario, según sea necesario
+        }
+      } catch (e) {
+        setFormData({
+          name: '',
+      lastName: '',
+      email: '',
+      administrator: false,
+      password: ''
+        })
+      }
+    } else {
+      console.log('Completar todos los campos');
+    }
   };
 
   return (
@@ -32,8 +59,9 @@ const Register = () => {
             Nombre:
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value.trim())}
+              name='name'
+              value={formData.name}
+              onChange={(e) => handleInputChange(e) }
             />
           </label>
 
@@ -41,18 +69,19 @@ const Register = () => {
             Apellido:
             <input
               type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value.trim())}
+              name='lastName'
+              value={formData.lastName}
+              onChange={(e) => handleInputChange(e)}
             />
           </label>
-
 
           <label>
             Correo electrónico:
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value.trim())}
+              name='email'
+              value={formData.email}
+              onChange={(e) => handleInputChange(e)}
             />
           </label>
 
@@ -60,8 +89,9 @@ const Register = () => {
             Password:
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name='password'
+              value={formData.password}
+              onChange={(e) => handleInputChange(e)}
             />
           </label>
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
-import "./PaymentModal.css"; // Asegúrate de incluir cualquier estilo adicional necesario
+import "./PaymentModal.css";
 
 const PaymentModal = ({ onConfirm, onClose }) => {
   const [number, setNumber] = useState("");
@@ -12,8 +12,52 @@ const PaymentModal = ({ onConfirm, onClose }) => {
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
   const [address, setAddress] = useState("");
+  const [total, setTotal] = useState(0);
+
+  const validarCVV = (cvc) => {
+    const regex = /^[0-9]{3}$/;
+    return regex.test(cvc);
+  };
+
+  const validarTarjeta = (number) => {
+    const regex = /^[0-9]{16}$/;
+    return regex.test(number);
+  };
+
+  const validarFechaExpiracion = (fecha) => {
+    const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+    if (!regex.test(fecha)) {
+      return false;
+    }
+    const [mes, año] = fecha.split('/');
+    const mesActual = new Date().getMonth() + 1;
+    const añoActual = new Date().getFullYear() % 100;
+    return (parseInt(año) > añoActual || (parseInt(año) === añoActual && parseInt(mes) >= mesActual));
+  };
+
+  const limitarDecimales = (total) => {
+    return total.toFixed(2);
+  };
 
   const handleConfirm = () => {
+    if (!validarCVV(cvc)) {
+      alert("CVV no es válido");
+      return;
+    }
+
+    if (!validarTarjeta(number)) {
+      alert("Número de tarjeta no es válido");
+      return;
+    }
+
+    if (!validarFechaExpiracion(expiry)) {
+      alert("Fecha de expiración no es válida");
+      return;
+    }
+
+    const totalLimite = limitarDecimales(total);
+    alert(`Total a pagar: ${totalLimite}`);
+
     onConfirm();
   };
 
@@ -27,7 +71,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
         <div className="shipping-address">
           <form>
             <div className="form-group">
-              <label htmlFor="address">Dirección de envio</label>
+              <label htmlFor="address">Dirección de envío</label>
               <input
                 type="text"
                 className="form-control"
@@ -49,15 +93,15 @@ const PaymentModal = ({ onConfirm, onClose }) => {
           />
         </div>
         <form>
-        <div className="form-group">
-            <label htmlFor="number">Numero de tarjeta</label>
+          <div className="form-group">
+            <label htmlFor="number">Número de tarjeta</label>
             <input
               type="text"
               className="form-control"
               id="number"
               name="number"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={(e) => setNumber(e.target.value.slice(0, 16))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -93,7 +137,7 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="expiry"
               name="expiry"
               value={expiry}
-              onChange={(e) => setExpiry(e.target.value)}
+              onChange={(e) => setExpiry(e.target.value.slice(0, 5))}
               onFocus={(e) => setFocus(e.target.name)}
             />
           </div>
@@ -105,8 +149,19 @@ const PaymentModal = ({ onConfirm, onClose }) => {
               id="cvc"
               name="cvc"
               value={cvc}
-              onChange={(e) => setCvc(e.target.value)}
+              onChange={(e) => setCvc(e.target.value.slice(0, 3))}
               onFocus={(e) => setFocus(e.target.name)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="total">Total</label>
+            <input
+              type="number"
+              className="form-control"
+              id="total"
+              name="total"
+              value={total}
+              onChange={(e) => setTotal(parseFloat(e.target.value).toFixed(2))}
             />
           </div>
           <button type="button" onClick={handleConfirm} className="btn btn-primary">

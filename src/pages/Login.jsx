@@ -1,23 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
-import { USUARIOS } from '../dummys/usuariosDummy.js';
-import { UserContext } from '../context/UserContext.tsx';
 import { useDispatch } from 'react-redux';
 import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
 
-//Esta funcionalidad sera del backend, es temporal.
-function authUser(email, password){
-  //valida el email y contraseña, si son valido devuelve el usuario, sino undefined
-  const usuarioEncontrado = USUARIOS.find( (usuario) => usuario.email === email.trim());
-
-  if(usuarioEncontrado && usuarioEncontrado.contraseña === password){
-    return usuarioEncontrado;
-  }
-  
-  return undefined; //si no lo encontro o la password esta mal, devuelve undefined
-}
 
 const Login = () => {
 
@@ -34,13 +21,14 @@ const Login = () => {
     console.log('Correo electrónico:', email);
     console.log('Contraseña:', password);
 
+    /*
     const usuarioEncontrado = authUser(email, password);
     if (usuarioEncontrado) {
       dispatch({ type: 'SET_USER', payload: usuarioEncontrado });
       navigate('/home');
     } else {
       console.log('Los datos son incorrectos');
-    }
+    }*/
   };
 
   return (

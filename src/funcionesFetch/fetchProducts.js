@@ -21,7 +21,6 @@ export const fetchAllProducts = async () => {
   }
 };
   
-
 export const fetchProduct = async (productId) => {
   const url = `http://localhost:8080/auth/products/${productId}`;
 
