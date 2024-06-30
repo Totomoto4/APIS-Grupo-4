@@ -3,7 +3,7 @@ const path = require('path');
 const axios = require('axios');
 const FormData = require('form-data');
 
-jwtToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6YW5vbkBleGFtcGxlLmNvbSIsImlhdCI6MTcxODg5NTI4OCwiZXhwIjoxNzE4ODk4ODg4fQ.Str_ME5SsaTKDO6R9VY5AXlImhb0OuUM9seVM2sInK27leNPHjbXJtjYn1Y8qDewMFI2bmYZLKecCRH2AV3HRA";
+jwtToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZ29tZXpAZ21haWwuY29tIiwiaWF0IjoxNzE5NjIwMjE0LCJleHAiOjE3MTk2MjM4MTR9.Htx4WQnwsiIRCvh8RyRlk2ajEHp-DWsSC_RcToq3guBCKSJGFWmqeawWgh6oP6RAFYd2Lu-hqkFziI3PohjWRQ" 
 
 // Directorio donde están almacenadas las imágenes
 const imageDirectory = path.join(__dirname, 'productos');
