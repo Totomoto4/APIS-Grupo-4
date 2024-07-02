@@ -14,6 +14,14 @@ const Cart = ({ setShowCartModal }) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: { id: productId } });
   };
 
+  const handleIncreaseQuantity = (productId) => {
+    dispatch({ type: 'INCREASE_QUANTITY', payload: { id: productId } });
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    dispatch({ type: 'DECREASE_QUANTITY', payload: { id: productId } });
+  }
+
   const calculateTotal = () => {
     let total = Object.values(cart).reduce((acc, { product, cantidad }) => {
       return acc + product.price * cantidad;
@@ -66,9 +74,16 @@ const Cart = ({ setShowCartModal }) => {
           <ul>
             {Object.entries(cart).map(([productId, { product, cantidad }]) => (
               <li key={productId}>
-                {product.name} - ${product.price} x {cantidad}
-                <button className="remove-button" onClick={() => handleRemoveFromCart(productId)}>
+                {product.name} - 
+                <button className='remove-button' onClick={() => handleRemoveFromCart(productId)}>
+                  🗑️ {/* Tacho de basura */}
+                </button>
+                ${product.price} x {cantidad}
+                <button className="decrease-button" onClick={() => handleDecreaseQuantity(productId)}>
                   &#x2B07; {/* Flecha hacia abajo */}
+                </button>
+                <button className="increase-button" onClick={() => handleIncreaseQuantity(productId)}>
+                  &#x2B06; {/* Flecha hacia arriba */}
                 </button>
               </li>
             ))}

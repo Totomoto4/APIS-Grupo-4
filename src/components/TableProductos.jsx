@@ -3,11 +3,15 @@ import {products} from "../dummys/productsSimpsons"
 
 import './TableProductos.css';
 import { useState } from "react";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { useNavigate } from 'react-router-dom';
 
 export default function TableProductos(){
 
+    // const [products, setProducts] = useState();
     const [productoActivo, setProductoActivo] = useState();
     const [isUnderChanges, setIsUnderChanges] = useState(false);
+    const navigate = useNavigate();
 
     function activarProducto(producto){
       setProductoActivo(producto);
@@ -18,12 +22,16 @@ export default function TableProductos(){
       setProductoActivo(undefined);
     }
 
+    const handleAgregarProducto = () => {
+      navigate('/newProduct');
+    };
+
     function renderTable(){
       return(
         <table id="TABLE-GENERAL">
           <thead>
             <tr>
-              <th></th>
+              <th><button id='AGREGAR-PROD' onClick={handleAgregarProducto}>Agregar Producto</button></th>
               <th>ID</th>
               <th>Nombre</th>
               <th>Precio</th>
@@ -77,6 +85,7 @@ export default function TableProductos(){
               </tr>
             </table>
             <button id="ACEPTAR-BTN" onClick={handleAceptarBTN}>{isUnderChanges ? "Aceptar" : "Modificar"}</button>
+            <button id="ELIMINAR-BTN">Eliminar Producto</button>
           </section>
         </div>
       );
@@ -89,7 +98,6 @@ export default function TableProductos(){
         setIsUnderChanges(true)
       }
     }
-
     return(
         productoActivo ? renderProducto() : renderTable()
     );

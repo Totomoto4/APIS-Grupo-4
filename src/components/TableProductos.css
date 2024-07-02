@@ -93,6 +93,43 @@
     color: #000000;
 }
 
+#ELIMINAR-BTN {
+    font-family: 'Simpson';
+    border: solid black;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #b83241;
+    color: white;
+    border-radius: 1.2rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: medium;
+}
+
+#ELIMINAR-BTN:hover{
+    background-color: #ecde1a;
+    color: #000000;
+}
+
+#AGREGAR-PROD {
+    font-family: 'Simpson';
+    border: solid black;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #b83241;
+    color: white;
+    border-radius: 1.2rem;
+    width: 50%;
+    padding: 0.5rem 0;
+    font-size: medium;
+}
+
+#AGREGAR-PROD:hover {
+    background-color: #ecde1a;
+    color: #000000;
+}
+
 .producto-info-admin{
     width: 40%;
 }
