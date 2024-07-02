@@ -10,6 +10,7 @@ import Producto from './pages/Producto.jsx';
 import AdminInterface from './pages/AdminInterface.jsx';
 import { Provider } from 'react-redux';
 import store from './store.jsx';
+import NewProd from './components/NewProd.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path:'producto/:productoID',
     element: <Producto/>
+  }, 
+  {
+    path: 'newProduct',
+    element: <NewProd/>,
   },
   {
     path: '/*',

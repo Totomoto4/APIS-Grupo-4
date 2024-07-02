@@ -7,6 +7,26 @@
     cursor: pointer; /* Cursor de puntero */
     margin-left: 10px; /* Margen izquierdo */
   }
+
+  .increase-button {
+    background-color: #ff6347; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero */
+    margin-left: 10px; /* Margen izquierdo */
+  }
+
+  .decrease-button {
+    background-color: #ff6347; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero */
+    margin-left: 10px; /* Margen izquierdo */
+  }
   
   .checkout-button {
     background-color: #007bff; /* Color de fondo */

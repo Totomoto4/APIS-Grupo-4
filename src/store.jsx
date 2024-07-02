@@ -9,6 +9,10 @@ const initialCartState = {
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const CLEAR_CART = 'CLEAR_CART';
+const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
+const ADD_PRODUCT = 'ADD_PRODUCT';
+const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
 // Definir el reductor para el carrito
 const cartReducer = (state = initialCartState, action) => {
@@ -41,20 +45,42 @@ const cartReducer = (state = initialCartState, action) => {
         };
       }
       case 'REMOVE_FROM_CART':
-        const updatedCart = { ...state.cart };
-        const productIdToRemove = action.payload.id; // Renombrar la variable aquí
-        if (updatedCart[productIdToRemove].cantidad > 1) {
-          updatedCart[productIdToRemove] = {
-            ...updatedCart[productIdToRemove],
-            cantidad: updatedCart[productIdToRemove].cantidad - 1
-          };
-        } else {
-          delete updatedCart[productIdToRemove];
-        }
+        const newCart = { ...state.cart };
+        delete newCart[action.payload.id];
+        return { ...state, cart: newCart };
+      case 'INCREASE_QUANTITY':
+        const productIdToIncrease = action.payload.id;
         return {
           ...state,
-          cart: updatedCart
+          cart: {
+            ...state.cart,
+            [productIdToIncrease]: {
+              ...state.cart[productIdToIncrease],
+              cantidad: state.cart[productIdToIncrease].cantidad + 1
+            }
+          }
         };
+      case 'DECREASE_QUANTITY':
+        const productIdToDecrease = action.payload.id;
+        if (state.cart[productIdToDecrease].cantidad > 1) {
+          return {
+            ...state,
+            cart: {
+              ...state.cart,
+              [productIdToDecrease]: {
+                ...state.cart[productIdToDecrease],
+                cantidad: state.cart[productIdToDecrease].cantidad - 1
+              }
+            }
+          };
+        } else {
+          const newCart = { ...state.cart };
+          delete newCart[productIdToDecrease];
+          return {
+            ...state,
+            cart: newCart
+          };
+        }
       case 'CLEAR_CART':
         return {
           ...state,
@@ -91,6 +117,7 @@ const userReducer = (state = initialUserState, action) => {
       return state;
   }
 };
+
 
 
 // Combinar los reductores
