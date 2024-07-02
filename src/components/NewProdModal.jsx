@@ -44,7 +44,7 @@ function NewProdModal({ onClose }) {
           </div>
           <div className="form-group">
             <label>Imagen</label>
-            <input type="file" name="imagen" placeholder="Imagen" required />
+            <input type="file" name="imagen" placeholder="Imagen" accept='image/png, image/jpeg'required />
           </div>
           <button type="submit" id='CONFIRMAR-BTN'>Confirmar</button>
           </div>
