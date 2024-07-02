@@ -2,15 +2,16 @@ import RowProducto from "./RowProducto"
 import {products} from "../dummys/productsSimpsons"
 
 import './TableProductos.css';
+import NewProdModal from "./NewProdModal";
 import { useState } from "react";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from 'react-router-dom';
 
 export default function TableProductos(){
 
-    // const [products, setProducts] = useState();
     const [productoActivo, setProductoActivo] = useState();
     const [isUnderChanges, setIsUnderChanges] = useState(false);
+    const [showModal ,setShowModal] = useState(false);
     const navigate = useNavigate();
 
     function activarProducto(producto){
@@ -23,8 +24,19 @@ export default function TableProductos(){
     }
 
     const handleAgregarProducto = () => {
-      navigate('/newProduct');
+      setShowModal(true);
     };
+
+    const closeModal = () => {
+      setShowModal(false);
+    }
+
+    const handleEliminarProducto = () => {
+      if (productoActivo) {
+        const updatedProducts = products.filter(prod => prod.id !== productoActivo.id);
+        desactivarProducto();
+      }
+    }
 
     function renderTable(){
       return(
@@ -85,7 +97,7 @@ export default function TableProductos(){
               </tr>
             </table>
             <button id="ACEPTAR-BTN" onClick={handleAceptarBTN}>{isUnderChanges ? "Aceptar" : "Modificar"}</button>
-            <button id="ELIMINAR-BTN">Eliminar Producto</button>
+            <button id="ELIMINAR-BTN" onClick={handleEliminarProducto}>Eliminar Producto</button>
           </section>
         </div>
       );
@@ -99,6 +111,9 @@ export default function TableProductos(){
       }
     }
     return(
-        productoActivo ? renderProducto() : renderTable()
+      <>
+        {productoActivo ? renderProducto() : renderTable()}
+        {showModal && <NewProdModal onClose={closeModal} />}
+      </>
     );
 }
