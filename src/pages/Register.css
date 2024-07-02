@@ -19,10 +19,14 @@
   box-shadow: 1px 15px 15px 0.5rem rgba(17, 17, 17, 0.925);
 
   #logo{
-    height: 15%;
     width:fit-content;
     margin: 3rem auto 0;
   }
+}
+
+.register-form #linkToHome {
+  display: flex;
+  height: 20%;
 }
 
 .register-form form {

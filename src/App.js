@@ -8,8 +8,6 @@ import Homepage from './pages/Homepage.jsx';
 import Catalogo from './pages/Catalogo.jsx';
 import Producto from './pages/Producto.jsx';
 import AdminInterface from './pages/AdminInterface.jsx';
-import { UserContext } from './context/UserContext.tsx';
-import { useState } from 'react';
 import { Provider } from 'react-redux';
 import store from './store.jsx';
 

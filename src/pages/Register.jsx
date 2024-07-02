@@ -1,40 +1,34 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Register.css';
-
 import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
-import axios from 'axios'; 
+import { registerUser } from '../funcionesFetch/authFunctions';
+
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const requestBody = {
       name: name.trim(),
       lastName: lastName.trim(),
       email: email.trim(),
-      password: password
+      password: password,
     };
 
-    try {
-      const response = await axios.post('http://localhost:8080/auth/register', requestBody);
-      console.log('Registro exitoso:', response.data);
-      navigate('/login'); 
-    } catch (error) {
-      console.error('Error en el registro:', error);
-    }
+    const user = registerUser(requestBody);
   };
 
   return (
     <div className="register-container">
       <div className="register-form">
-        <img src={logo} alt='logo' id='logo'/>
+        <Link to={"/"} id="linkToHome">
+          <img src={logo} alt="logo" id="logo" />
+        </Link>
         <h1>Registro</h1>
         <form onSubmit={handleSubmit}>
           <label>

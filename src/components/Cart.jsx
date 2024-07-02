@@ -1,31 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './Cart.css'; // Importa tu archivo CSS
+import './Cart.css'; 
 import PaymentModal from './PaymentModal';
+import { createOrder, verifyTotal } from '../funcionesFetch/orderFunctions';
+
+const transformCart = (cart) => {
+  return Object.keys(cart).reduce((acc, key) => {
+    acc[key] = cart[key].cantidad;
+    return acc;
+  }, {});
+};
 
 const Cart = ({ setShowCartModal }) => {
   const cart = useSelector(state => state.cart.cart);
+  const user = useSelector((state) => state.user.user);
+  const [total, setTotal] = useState(null);
   const dispatch = useDispatch();
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
-  const [discountApplied, setDiscountApplied] = useState(false);
+
+  useEffect(() => {
+    const fetchTotal = async () => {
+      const products = transformCart(cart);
+
+      const requestBody = {
+        productos: products,
+        codigos: [discountCode]
+      };
+
+      try {
+        const response = await verifyTotal(requestBody);
+        console.log('Respuesta del servidor:', response);
+        setTotal(response); 
+      } catch (error) {
+        console.error('Error al verificar el total:', error);
+        setTotal(0); 
+      }
+    };
+
+    fetchTotal(); 
+
+  }, []); 
 
   const handleRemoveFromCart = (productId) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: { id: productId } });
-  };
-
-  const calculateTotal = () => {
-    let total = Object.values(cart).reduce((acc, { product, cantidad }) => {
-      return acc + product.price * cantidad;
-    }, 0);
-
-    // Aplicar descuento si está activo
-    if (discountApplied) {
-      // Lógica para aplicar descuento (ejemplo: 10%)
-      total *= 0.9; // Reducir el total en un 10%
-    }
-
-    return total.toFixed(2); // Asegurarse de devolver el total con dos decimales
   };
 
   const handleCheckout = () => {
@@ -36,21 +54,43 @@ const Cart = ({ setShowCartModal }) => {
     }
   };
 
-  const handleConfirmPayment = () => {
+  const handleConfirmPayment = async (body) => {
+
+    const requestBody = {... body,
+      email: user.email,
+      total: total,
+      products: transformCart(cart),
+      codigos: [discountCode]
+    }
+
+    console.log(requestBody);
+    
+    const response = await createOrder(requestBody, user.access_token)
+
     alert('Compra realizada con éxito');
     dispatch({ type: 'CLEAR_CART' });
-    setShowCartModal(false); // Cerrar el modal del carrito
-    setShowPaymentModal(false); // Cerrar el modal de pago
+    setShowCartModal(false); 
+    setShowPaymentModal(false); 
   };
 
-  const applyDiscount = () => {
-    // Aquí podrías validar el código de descuento si es necesario
-    setDiscountApplied(true);
+  const applyDiscount = async () => {
+    const products = transformCart(cart);
+    const requestBody = {
+      productos : products,
+      codigos: [discountCode]
+    }
+
+    try{
+      const result = await verifyTotal(requestBody);
+      setTotal(result);
+    }catch(error){
+      console.log(error)
+    }
   };
 
   const handleCloseCart = () => {
-    setShowCartModal(false); // Cerrar el modal del carrito
-    setShowPaymentModal(false); // Cerrar el modal de pago
+    setShowCartModal(false);
+    setShowPaymentModal(false); 
   };
 
   return (
@@ -85,7 +125,7 @@ const Cart = ({ setShowCartModal }) => {
               Aplicar
             </button>
           </div>
-          <p>Total: ${calculateTotal()}</p>
+          <p>Total: {total}</p>
           <button className="checkout-button" onClick={handleCheckout}>
             Finalizar Compra
           </button>
@@ -93,6 +133,7 @@ const Cart = ({ setShowCartModal }) => {
       )}
       {showPaymentModal && (
         <PaymentModal
+          total={total}
           onConfirm={handleConfirmPayment}
           onClose={() => setShowPaymentModal(false)}
         />
