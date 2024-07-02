@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import ProductCard from "../components/ProductCard.jsx"; // Importa el componente de tarjeta de productos
 import Footer from "../components/Footer.jsx";
-import { fetchAllProducts, fetchProduct, fetchProductsByCategory } from "../funcionesFetch/fetchProducts.js";
+import { fetchAllProducts, fetchProductsByCategory } from "../funcionesFetch/productFunctions.js";
 
 import "./Catalogo.css";
 

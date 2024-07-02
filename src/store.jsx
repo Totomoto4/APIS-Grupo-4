@@ -118,37 +118,12 @@ const userReducer = (state = initialUserState, action) => {
   }
 };
 
-// Definir el estado inicial para el token
-const initialTokenState = {
-  token: null
-};
 
-const SET_TOKEN = 'SET_TOKEN';
-const REMOVE_TOKEN = 'REMOVE_TOKEN';
-
-// Definir el reductor para el token
-const tokenReducer = (state = initialTokenState, action) => {
-  switch (action.type) {
-    case SET_TOKEN:
-      return {
-        ...state,
-        token: action.payload
-      };
-    case REMOVE_TOKEN:
-      return {
-        ...state,
-        token: null
-      };
-    default:
-      return state;
-  }
-};
 
 // Combinar los reductores
 const rootReducer = combineReducers({
   cart: cartReducer,
   user: userReducer,
-  token: tokenReducer
 });
 
 // Crear la store de Redux

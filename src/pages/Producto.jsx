@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from 'react-redux';
 import { Link, useParams} from "react-router-dom";
 import { useState, useEffect } from "react"
-import { fetchProduct, fetchProductsByCategory } from "../funcionesFetch/fetchProducts.js";
+import { fetchProduct, fetchProductsByCategory } from "../funcionesFetch/productFunctions.js";
 
 import './Producto.css'
 

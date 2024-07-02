@@ -12,17 +12,11 @@ function Header(){
   const navigate = useNavigate();
 
   const [showCartModal, setShowCartModal] = useState(false);
-  const [isAdminMode, setIsAdminMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleShowCartModal = () => {
     setShowCartModal(!showCartModal);
   };
-
-  /*
-  const handleToggleMode = () => {
-    setIsAdminMode(!isAdminMode);
-  };*/
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
