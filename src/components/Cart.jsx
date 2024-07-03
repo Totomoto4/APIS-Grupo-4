@@ -38,7 +38,7 @@ const Cart = ({ setShowCartModal }) => {
 
     fetchTotal(); 
 
-  }, []); 
+  }, [cart]); 
 
 
   const handleIncreaseQuantity = (productId) => {

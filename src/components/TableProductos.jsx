@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import RowProducto from "./RowProducto";
-import { fetchAllProducts } from '../funcionesFetch/productFunctions'; // Asegúrate de importar correctamente
+import { deleteProduct, fetchAllProducts } from '../funcionesFetch/productFunctions'; // Asegúrate de importar correctamente
 import './TableProductos.css';
 import NewProdModal from "./NewProdModal";
-import { useNavigate } from 'react-router-dom';
+
 
 export default function TableProductos() {
+    const user = useSelector((state) => state.user.user);
     const [productos, setProductos] = useState([]);
     const [productoActivo, setProductoActivo] = useState();
     const [isUnderChanges, setIsUnderChanges] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         async function getProducts() {
@@ -23,7 +24,7 @@ export default function TableProductos() {
             }
         }
         getProducts();
-    }, []);
+    }, [productoActivo]);
 
     function activarProducto(producto) {
         setProductoActivo(producto);
@@ -44,9 +45,12 @@ export default function TableProductos() {
 
     const handleEliminarProducto = () => {
         if (productoActivo) {
-            const updatedProducts = productos.filter(prod => prod.id !== productoActivo.id);
-            setProductos(updatedProducts);
-            desactivarProducto();
+            try {
+                deleteProduct(productoActivo.id, user.access_token);
+                desactivarProducto();
+            } catch(error){
+                console.log(error);
+            }
         }
     };
 

@@ -65,3 +65,28 @@ export const fetchProductsByCategory = async (category) => {
     console.error('Fetch error:', error);
   }
 };
+
+export const deleteProduct = async (id, token) => {
+  const url = `http://localhost:8080/products/${id}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+
+    const responseText = await response.text();  // Get the response as text
+
+    if (!response.ok) {
+      console.error('Error response text:', responseText);  // Log the error response text
+      throw new Error('Error deleting product: ' + responseText);
+    }
+
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}
