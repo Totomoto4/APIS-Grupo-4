@@ -13,6 +13,3 @@ Docentes a cargo:
 -Denis Andrea Balestri
 
 
-# Mejoras en proceso
--alertar cuando un intento de login es fallido, actualmente no hay nada.
--register no es correcto, faltan campos y logica 
