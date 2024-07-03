@@ -79,10 +79,7 @@
     margin-bottom: 5px;
     font-weight: bold;
   }
-  
-  input[type='text'],
-  input[type='number'],
-  select {
+  .newProdInput {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -91,7 +88,8 @@
     background-color: white;
     color: black;
     margin-top: 5px;
-  }  
+  }
+
 
   .select-style {
     width: 100%;

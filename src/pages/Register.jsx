@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../imagenes/generales/kiwi-logo-pequeño.png';
 import { registerUser } from '../funcionesFetch/authFunctions';
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
@@ -10,9 +11,11 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const requestBody = {
       name: name.trim(),
       lastName: lastName.trim(),
@@ -20,7 +23,12 @@ const Register = () => {
       password: password,
     };
 
-    const user = registerUser(requestBody);
+    const user = await registerUser(requestBody);
+    console.log(user)
+    if (user) {
+      navigate("/login");
+    }
+    
   };
 
   return (
@@ -37,6 +45,7 @@ const Register = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </label>
 
@@ -46,6 +55,7 @@ const Register = () => {
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              required
             />
           </label>
 
@@ -55,6 +65,7 @@ const Register = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </label>
 
@@ -64,6 +75,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </label>
 
