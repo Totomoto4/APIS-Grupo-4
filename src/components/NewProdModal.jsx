@@ -18,11 +18,11 @@ function NewProdModal({ onClose }) {
          <div className='form-grid'>
           <div className="form-group">
             <label>Nombre</label>
-            <input type="text" name="nombre" placeholder="Nombre" required />
+            <input className='newProdInput' type="text" name="nombre" placeholder="Nombre" required />
           </div>
           <div className="form-group">
             <label>Categoria</label>
-            <select name="categoria" className="select-style" required>
+            <select name="categoria" className="select-style newProdInput" required>
               <option value="1">Comic</option>
               <option value="2">Funko</option>
               <option value="3">Juego</option>
@@ -32,19 +32,19 @@ function NewProdModal({ onClose }) {
 
           <div className="form-group">
             <label>Descripcion</label>
-            <input type="text" name="descripcion" placeholder="Descripcion" required />
+            <input className='newProdInput' type="text" name="descripcion" placeholder="Descripcion" required />
           </div>
           <div className="form-group">
             <label>Cantidad</label>
-            <input type="number" name='cantidad' placeholder='Cantidad' required />
+            <input className='newProdInput' type="number" name='cantidad' placeholder='Cantidad' required />
           </div>
           <div className="form-group">
             <label>Precio</label>
-            <input type="number" name="precio" placeholder="Precio" required />
+            <input className='newProdInput' type="number" name="precio" placeholder="Precio" required />
           </div>
           <div className="form-group">
             <label>Imagen</label>
-            <input type="file" name="imagen" placeholder="Imagen" accept='image/png, image/jpeg'required />
+            <input className='newProdInput' type="file" name="imagen" placeholder="Imagen" accept='image/png, image/jpeg'required />
           </div>
           <button type="submit" id='CONFIRMAR-BTN'>Confirmar</button>
           </div>

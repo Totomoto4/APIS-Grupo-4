@@ -12,17 +12,18 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
+    const handleSubmit = async (e) => {  
+      e.preventDefault();
+             
         const requestBody = {
           email: email.trim(),
           password: password
         };
     
         try {
+          if (requestBody.email === '' || requestBody.password === '') throw "Empty";
           const user = await authUser(requestBody);
-    
+          
           if (user) {
             dispatch({
               type: 'SET_USER',
@@ -51,6 +52,7 @@ const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value.trim())}
+                required
               />
             </label>
             <label>
@@ -59,6 +61,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </label>
             <button type="submit">Iniciar sesión</button>

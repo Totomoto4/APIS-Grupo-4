@@ -8,6 +8,7 @@ export const registerUser = async (requestBody) => {
         return response.data;
       } catch (error) {
         console.error('Error en el registro:', error);
+        alert('Ya existe un usuario con ese correo');
     }
 
 }
@@ -18,6 +19,6 @@ export const authUser = async (requestBody) => {
         console.log('Inicio de sesión exitoso:', response.data);
         return response.data
     } catch (error) {
-        console.error('Error en el inicio de sesión:', error);
+        alert('Credenciales Incorrectas');
     }
 }
