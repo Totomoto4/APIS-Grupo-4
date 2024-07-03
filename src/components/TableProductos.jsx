@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import RowProducto from "./RowProducto";
-import { deleteProduct, fetchAllProducts } from '../funcionesFetch/productFunctions'; // Asegúrate de importar correctamente
+import { deleteProduct, fetchAllProducts, updateProduct } from '../funcionesFetch/productFunctions'; // Asegúrate de importar correctamente
 import './TableProductos.css';
 import NewProdModal from "./NewProdModal";
 
@@ -12,19 +12,20 @@ export default function TableProductos() {
     const [productoActivo, setProductoActivo] = useState();
     const [isUnderChanges, setIsUnderChanges] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [controladorDeCarga, setControlador] = useState(true);
 
     useEffect(() => {
+        console.log("Use efect ejecutado");
         async function getProducts() {
             try {
                 const data = await fetchAllProducts();
                 setProductos(data);
-                console.log("Productos obtenidos:", data); // Verificar si los productos se obtienen correctamente
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
         }
         getProducts();
-    }, [productoActivo]);
+    }, [controladorDeCarga]);
 
     function activarProducto(producto) {
         setProductoActivo(producto);
@@ -33,6 +34,7 @@ export default function TableProductos() {
     function desactivarProducto() {
         setIsUnderChanges(false);
         setProductoActivo(undefined);
+        recargarProductos();
     }
 
     const handleAgregarProducto = () => {
@@ -43,16 +45,29 @@ export default function TableProductos() {
         setShowModal(false);
     };
 
+    const recargarProductos = () => {
+        setControlador(!controladorDeCarga);
+    }
+
     const handleEliminarProducto = () => {
         if (productoActivo) {
             try {
                 deleteProduct(productoActivo.id, user.access_token);
                 desactivarProducto();
+                recargarProductos();
             } catch(error){
                 console.log(error);
             }
         }
     };
+
+    const handleChange = (event) => {
+        const { name, value, files } = event.target;
+        setProductoActivo(prevState => ({
+          ...prevState,
+          [name]: name === 'imagen' ? files[0] : value
+        }));
+      };
 
     function renderTable() {
         return (
@@ -114,25 +129,25 @@ export default function TableProductos() {
                             <tr>
                                 <td className="left-header">Nombre</td>
                                 <td className="right-datacell">
-                                    {isUnderChanges ? <input type="text" defaultValue={productoActivo.name} /> : <p>{productoActivo.name}</p>}
+                                    {isUnderChanges ? <input name='name' type="text" defaultValue={productoActivo.name} onChange={handleChange}/> : <p>{productoActivo.name}</p>}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="left-header">Descripcion</td>
                                 <td className="right-datacell">
-                                    {isUnderChanges ? <input type="text" defaultValue={productoActivo.description} /> : <p>{productoActivo.description}</p>}
+                                    {isUnderChanges ? <input name='description' type="text" defaultValue={productoActivo.description} onChange={handleChange}/> : <p>{productoActivo.description}</p>}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="left-header">Precio</td>
                                 <td className="right-datacell">
-                                    {isUnderChanges ? <input type="number" defaultValue={productoActivo.price} /> : <p>{productoActivo.price}</p>}
+                                    {isUnderChanges ? <input name='price' type="number" defaultValue={productoActivo.price} onChange={handleChange}/> : <p>{productoActivo.price}</p>}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="left-header">Stock</td>
                                 <td className="right-datacell">
-                                    {isUnderChanges ? <input type="number" defaultValue={productoActivo.stock} /> : <p>{productoActivo.stock}</p>}
+                                    {isUnderChanges ? <input name='stock' type="number" defaultValue={productoActivo.stock} onChange={handleChange}/> : <p>{productoActivo.stock}</p>}
                                 </td>
                             </tr>
                         </tbody>
@@ -144,9 +159,11 @@ export default function TableProductos() {
         );
     }
 
-    function handleAceptarBTN() {
+    const handleAceptarBTN = () => {
         if (isUnderChanges) {
+            updateProduct(productoActivo, user.access_token)
             setIsUnderChanges(false);
+            
         } else {
             setIsUnderChanges(true);
         }
@@ -155,7 +172,7 @@ export default function TableProductos() {
     return (
         <>
             {productoActivo ? renderProducto() : renderTable()}
-            {showModal && <NewProdModal onClose={closeModal} />}
+            {showModal && <NewProdModal recargaProductos={recargarProductos} onClose={closeModal} />}
         </>
     );
 }

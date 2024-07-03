@@ -18,6 +18,7 @@ const Cart = ({ setShowCartModal }) => {
   const dispatch = useDispatch();
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
+  const [discountInput, setDiscountInput] = useState('');
 
   useEffect(() => {
     const fetchTotal = async () => {
@@ -73,9 +74,12 @@ const Cart = ({ setShowCartModal }) => {
     console.log(requestBody);
     
     const response = await createOrder(requestBody, user.access_token)
+    console.log(response);
 
-    alert('Compra realizada con éxito');
-    dispatch({ type: 'CLEAR_CART' });
+    if(response){
+      alert('Compra realizada con éxito');
+      dispatch({ type: 'CLEAR_CART' });
+    }
     setShowCartModal(false); 
     setShowPaymentModal(false); 
   };
@@ -84,12 +88,14 @@ const Cart = ({ setShowCartModal }) => {
     const products = transformCart(cart);
     const requestBody = {
       productos : products,
-      codigos: [discountCode]
+      codigos: [discountInput]
     }
 
     try{
       const result = await verifyTotal(requestBody);
       setTotal(result);
+      setDiscountInput('')
+      setDiscountCode(discountInput)
     }catch(error){
       console.log(error)
     }
@@ -104,37 +110,53 @@ const Cart = ({ setShowCartModal }) => {
     <div className="cart-container">
       <div className="cart-header">
         <h2>Carrito</h2>
-        <button className="custom-close-button" onClick={handleCloseCart}>x</button>
+        <button className="custom-close-button" onClick={handleCloseCart}>
+          x
+        </button>
       </div>
       {Object.keys(cart).length === 0 ? (
         <p>No hay productos en el carrito</p>
       ) : (
         <div>
-          <ul>
+          <ul className='ulCart'>
             {Object.entries(cart).map(([productId, { product, cantidad }]) => (
-              <li key={productId}>
-                {product.name} - 
-                <button className='remove-button' onClick={() => handleRemoveFromCart(productId)}>
-                  🗑️ {/* Tacho de basura */}
-                </button>
-                ${product.price} x {cantidad}
-                <button className="decrease-button" onClick={() => handleDecreaseQuantity(productId)}>
-                  &#x2B07; {/* Flecha hacia abajo */}
-                </button>
-                <button className="increase-button" onClick={() => handleIncreaseQuantity(productId)}>
-                  &#x2B06; {/* Flecha hacia arriba */}
-                </button>
+              <li className='ilCart' key={productId}>
+                <span>
+                  {product.name} - ${product.price} x {cantidad}
+                </span>
+                <div>
+                  <button
+                    className="decrease-button"
+                    onClick={() => handleDecreaseQuantity(productId)}
+                  >
+                    &#x2B07; {/* Flecha hacia abajo */}
+                  </button>
+                  <button
+                    className="increase-button"
+                    onClick={() => handleIncreaseQuantity(productId)}
+                  >
+                    &#x2B06; {/* Flecha hacia arriba */}
+                  </button>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleRemoveFromCart(productId)}
+                  >
+                    🗑️ {/* Tacho de basura */}
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
+
           <div className="discount-input">
             <label htmlFor="discountCode">Código de Descuento:</label>
             <input
               type="text"
               id="discountCode"
-              value={discountCode}
-              onChange={(e) => setDiscountCode(e.target.value)}
+              value={discountInput}
+              onChange={(e) => setDiscountInput(e.target.value)}
             />
+            {discountCode != "" ? <p id="CODE">{discountCode}</p> : undefined}
             <button className="apply-discount-button" onClick={applyDiscount}>
               Aplicar
             </button>
@@ -157,3 +179,26 @@ const Cart = ({ setShowCartModal }) => {
 };
 
 export default Cart;
+
+
+/*
+
+<ul>
+            {Object.entries(cart).map(([productId, { product, cantidad }]) => (
+              <li key={productId}>
+                {product.name} - 
+                ${product.price} x {cantidad}
+                <button className="decrease-button" onClick={() => handleDecreaseQuantity(productId)}>
+                  &#x2B07; {/* Flecha hacia abajo *//*}
+                  </button>
+                  <button className="increase-button" onClick={() => handleIncreaseQuantity(productId)}>
+                    &#x2B06; {/* Flecha hacia arriba *//*}
+                  </button>
+                  <button className='remove-button' onClick={() => handleRemoveFromCart(productId)}>
+                    🗑️ {/* Tacho de basura *//*}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+*/

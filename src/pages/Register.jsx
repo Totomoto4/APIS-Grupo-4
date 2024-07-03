@@ -26,6 +26,7 @@ const Register = () => {
     const user = await registerUser(requestBody);
     console.log(user)
     if (user) {
+      alert("Usuario registrado con exito!")
       navigate("/login");
     }
     

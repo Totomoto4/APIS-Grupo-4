@@ -13,7 +13,7 @@ export const createOrder = async (requestBody, token) => {
         return response.data;
       } catch (error) {
         console.error('Error en la solicitud POST:', error);
-        throw error;
+        alert("Hubo un problema para procesar la orden. Pruebe otro momento")
       }
 }
 

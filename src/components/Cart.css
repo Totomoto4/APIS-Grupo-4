@@ -64,3 +64,28 @@
     color: red; /* Cambia el color al pasar el mouse */
     background-color: transparent;
   }
+
+  #CODE{
+    color: yellow;
+    font-size: small;
+    margin: 0;
+  }
+
+  .ulCart {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .ilCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border: none;
+  }
+  
+  li > span {
+    flex: 1;
+  }

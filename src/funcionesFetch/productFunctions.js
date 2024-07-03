@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const fetchAllProducts = async () => {
   const url = 'http://localhost:8080/auth/products';
 
@@ -90,3 +92,53 @@ export const deleteProduct = async (id, token) => {
     throw error;
   }
 }
+
+export const createProduct = async (requestBody, token) => {
+
+  const url = 'http://localhost:8080/products';
+  const formData = new FormData();
+  formData.append('name', requestBody.name);
+  formData.append('category', requestBody.category);
+  formData.append('description', requestBody.description);
+  formData.append('stock', requestBody.stock);
+  formData.append('price', requestBody.price);
+  formData.append('image', requestBody.image);
+
+  try {
+    const response = await axios.post(url, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    console.log("Producto creado:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const updateProduct = async (product, token) => {
+
+  const url = `http://localhost:8080/products/${product.id}`;
+  const formData = new FormData();
+  formData.append('name', product.name);
+  formData.append('category', product.category);
+  formData.append('description', product.description);
+  formData.append('stock', product.stock);
+  formData.append('price', product.price);
+  try {
+    const response = await axios.put(url, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    console.log("Producto actualizado:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+
